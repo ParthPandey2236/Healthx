@@ -1,4 +1,4 @@
-package com.example.elc_hack;
+package com.example.elchackathon_app;
 
 import io.flutter.embedding.android.FlutterActivity;
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1034501008688",
+    "firebase_url": "https://ctrl-alt-elite-bd79d.firebaseio.com",
+    "project_id": "ctrl-alt-elite-bd79d",
+    "storage_bucket": "ctrl-alt-elite-bd79d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034501008688:android:5cfd0e5d229fbc1f9fecf5",
+        "android_client_info": {
+          "package_name": "com.example.elchackathon_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034501008688-4ul9des25f0vri9vch7jkf883qf2pk77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr-smrVCx1XthQOE9-3h8OQKjlXdHQyQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034501008688-4ul9des25f0vri9vch7jkf883qf2pk77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
