@@ -72,9 +72,9 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     // ----- Username input stored in a string -----//
-                    onSubmitted: (String usr){
+                    onChanged: (value){
                       setState(() {
-                        email = usr;
+                        email = value;
                       });
                     }
                 ),
@@ -106,9 +106,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   // ----- Password input stored in a string -----//
-                  onSubmitted: (String pass){
+                  onChanged: (value){
                     setState((){
-                      password = pass;
+                      password = value;
                     });
                   },
                   obscureText: true,
@@ -141,9 +141,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   // ---- Confirm password input stored in a string ----//
-                  onSubmitted: (String cmpass){
+                  onChanged: (value){
                     setState(() {
-                      confirmpassword = cmpass;
+                      confirmpassword = value;
                     });
                   },
                   obscureText: true,
