@@ -13,164 +13,172 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // --------------- Sign Up Container ---------------//
-            ClipPath(
-              clipper: MyClipper(),
-              child: Container(
-                color: Colors.pinkAccent[200],
-                height: 200,
-                child: Center(
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.25,
-                      color: Colors.white,
-                    ),
+        child: Container(
+          decoration: BoxDecoration(
+              image: new DecorationImage(
+                  image: new AssetImage('assets/PinkRibbon.jpg'),
+                  colorFilter:
+                  ColorFilter.mode(Colors.black.withOpacity(0.8),
+                      BlendMode.dstATop),
+                  fit: BoxFit.cover
+              )
+          ),
+          child: Column(
+            children: [
+              // --------------- Sign Up Container ---------------//
+              Container(
+                //color: Colors.white,
+                padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
+                height: 280,
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                  'Sign\nUp',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.25,
+                    color: Colors.pinkAccent[200],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 40),
-            // --------------- Username box ---------------//
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-              width: MediaQuery.of(context).size.width-20,
-              decoration: BoxDecoration(
-                  color:Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(255, 182, 193, 1),
-                      blurRadius: 20.0,
-                      offset: Offset(0,5),
-                    ),
-                  ]
-              ),
+              SizedBox(height: 20),
+              // --------------- Username box ---------------//
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                width: MediaQuery.of(context).size.width-20,
+                decoration: BoxDecoration(
+                    color:Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 182, 193, 1),
+                        blurRadius: 20.0,
+                        offset: Offset(0,5),
+                      ),
+                    ]
+                ),
 
-              child: TextField(
+                child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Username',
+                      hintStyle: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    // ----- Username input stored in a string -----//
+                    onSubmitted: (String usr){
+                      setState(() {
+                        Username = usr;
+                      });
+                    }
+                ),
+              ),
+              SizedBox(height: 20),
+              // --------------- Password box ---------------//
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                width: MediaQuery.of(context).size.width-20,
+                decoration: BoxDecoration(
+                    color:Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 182, 193, 1),
+                        blurRadius: 20.0,
+                        offset: Offset(0,5),
+                      ),
+                    ]
+                ),
+
+                child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Username',
+                    hintText: 'Password',
                     hintStyle: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 20.0,
                     ),
                   ),
-                  // ----- Username input stored in a string -----//
-                  onSubmitted: (String usr){
-                    setState(() {
-                      Username = usr;
+                  // ----- Password input stored in a string -----//
+                  onSubmitted: (String pass){
+                    setState((){
+                      Password = pass;
                     });
-                  }
-              ),
-            ),
-            SizedBox(height: 20),
-            // --------------- Password box ---------------//
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-              width: MediaQuery.of(context).size.width-20,
-              decoration: BoxDecoration(
-                  color:Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(255, 182, 193, 1),
-                      blurRadius: 20.0,
-                      offset: Offset(0,5),
-                    ),
-                  ]
-              ),
-
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Password',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 20.0,
-                  ),
-                ),
-                // ----- Password input stored in a string -----//
-                onSubmitted: (String pass){
-                  setState((){
-                    Password = pass;
-                  });
-                },
-                obscureText: true,
-              ),
-            ),
-            SizedBox(height: 20),
-            // --------------- Confirm password box ---------------//
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-              width: MediaQuery.of(context).size.width-20,
-              decoration: BoxDecoration(
-                  color:Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(255, 182, 193, 1),
-                      blurRadius: 20.0,
-                      offset: Offset(0,5),
-                    ),
-                  ]
-              ),
-
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Confirm Password',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 20.0,
-                  ),
-                ),
-                // ---- Confirm password input stored in a string ----//
-                onSubmitted: (String cmpass){
-                  setState(() {
-                    ConfirmPassword = cmpass;
-                  });
-                },
-                obscureText: true,
-              ),
-            ),
-            SizedBox(height: 40),
-            // --------------- Register Button ---------------//
-            Container(
-              child: RaisedButton(
-                  onPressed: (){
-                    if(ConfirmPassword!=Password){
-                      showAlertDialog(context,'Both passwords should match');
-                    }
-                    else if(Password.length<8){
-                      showAlertDialog(context,'Password too short');
-                    }
-                    else{
-                      Navigator.pop(context);
-                    }
                   },
-                  color: Colors.pinkAccent[200],
-                  child: Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width-150,
-                    child: Center(
-                      child: Text('Register',style: TextStyle(
-                        fontSize: 25,
-                        letterSpacing: 5,
-                        color: Colors.white,
-                      ),),
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(height: 20),
+              // --------------- Confirm password box ---------------//
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                width: MediaQuery.of(context).size.width-20,
+                decoration: BoxDecoration(
+                    color:Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 182, 193, 1),
+                        blurRadius: 20.0,
+                        offset: Offset(0,5),
+                      ),
+                    ]
+                ),
+
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Confirm Password',
+                    hintStyle: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 20.0,
                     ),
                   ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)
-                  )
+                  // ---- Confirm password input stored in a string ----//
+                  onSubmitted: (String cmpass){
+                    setState(() {
+                      ConfirmPassword = cmpass;
+                    });
+                  },
+                  obscureText: true,
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 40),
+              // --------------- Register Button ---------------//
+              Container(
+                child: RaisedButton(
+                    onPressed: (){
+                      if(ConfirmPassword!=Password){
+                        showAlertDialog(context,'Both passwords should match');
+                      }
+                      else if(Password.length<8){
+                        showAlertDialog(context,'Password too short');
+                      }
+                      else{
+                        Navigator.pop(context);
+                      }
+                    },
+                    color: Colors.pinkAccent[200],
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width-150,
+                      child: Center(
+                        child: Text('Register',style: TextStyle(
+                          fontSize: 25,
+                          letterSpacing: 5,
+                          color: Colors.white,
+                        ),),
+                      ),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)
+                    )
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
