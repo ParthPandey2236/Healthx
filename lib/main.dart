@@ -1,8 +1,13 @@
 import 'package:elchackathon_app/SignUpPage.dart';
 import 'package:elchackathon_app/HomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     home: Login(),
   ));
@@ -14,8 +19,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String Username="";
-  String Password="";
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,18 +78,19 @@ class _LoginState extends State<Login> {
                 ),
 
                 child: TextField(
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Username',
+                    hintText: 'Email Id',
                     hintStyle: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 20.0,
                     ),
                   ),
                   //-------- Username input stored in a String ---------//
-                  onSubmitted: (String usr){
+                  onChanged: (value){
                     setState(() {
-                      Username = usr;
+                      email = value;
                     });
                   },
                 ),
@@ -116,8 +123,8 @@ class _LoginState extends State<Login> {
                   //-------- Password input stored in a String ---------//
                   obscureText: true,
                   onSubmitted: (String pass){
-                    setState(() {
-                      Password = pass;
+                    setState((){
+                      password = pass;
                     });
                   },
                 ),
@@ -126,11 +133,19 @@ class _LoginState extends State<Login> {
               //-------- Sign in button ---------//
               Container(
                 child: RaisedButton(
-                    onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>Homepage())
-                      );
+                    onPressed: () async{
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context)=>Homepage())
+                          );
+                        }
+                      } catch (e) {
+                        showAlertDialog(context,'Invalid email or password');
+                      }
                     },
                     color: Colors.pinkAccent[200],
                     child: Container(
