@@ -122,9 +122,9 @@ class _LoginState extends State<Login> {
                   ),
                   //-------- Password input stored in a String ---------//
                   obscureText: true,
-                  onSubmitted: (String pass){
+                  onChanged: (value){
                     setState((){
-                      password = pass;
+                      password = value;
                     });
                   },
                 ),
