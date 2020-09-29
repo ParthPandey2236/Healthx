@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:elchackathon_app/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -20,12 +20,9 @@ class _SignUpState extends State<SignUp> {
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: new AssetImage('assets/PinkRibbon.jpg'),
-                  colorFilter:
-                  ColorFilter.mode(Colors.black.withOpacity(0.8),
-                      BlendMode.dstATop),
-                  fit: BoxFit.cover
-              )
-          ),
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                  fit: BoxFit.cover)),
           child: Column(
             children: [
               // --------------- Sign Up Container ---------------//
@@ -48,19 +45,17 @@ class _SignUpState extends State<SignUp> {
               // --------------- Username box ---------------//
               Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-                width: MediaQuery.of(context).size.width-20,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(255, 182, 193, 1),
                         blurRadius: 20.0,
-                        offset: Offset(0,5),
+                        offset: Offset(0, 5),
                       ),
-                    ]
-                ),
-
+                    ]),
                 child: TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -72,30 +67,27 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     // ----- Username input stored in a string -----//
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         email = value;
                       });
-                    }
-                ),
+                    }),
               ),
               SizedBox(height: 20),
               // --------------- Password box ---------------//
               Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-                width: MediaQuery.of(context).size.width-20,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(255, 182, 193, 1),
                         blurRadius: 20.0,
-                        offset: Offset(0,5),
+                        offset: Offset(0, 5),
                       ),
-                    ]
-                ),
-
+                    ]),
                 child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -106,8 +98,8 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   // ----- Password input stored in a string -----//
-                  onChanged: (value){
-                    setState((){
+                  onChanged: (value) {
+                    setState(() {
                       password = value;
                     });
                   },
@@ -118,19 +110,17 @@ class _SignUpState extends State<SignUp> {
               // --------------- Confirm password box ---------------//
               Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-                width: MediaQuery.of(context).size.width-20,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(255, 182, 193, 1),
                         blurRadius: 20.0,
-                        offset: Offset(0,5),
+                        offset: Offset(0, 5),
                       ),
-                    ]
-                ),
-
+                    ]),
                 child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -141,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   // ---- Confirm password input stored in a string ----//
-                  onChanged: (value){
+                  onChanged: (value) {
                     setState(() {
                       confirmpassword = value;
                     });
@@ -153,44 +143,44 @@ class _SignUpState extends State<SignUp> {
               // --------------- Register Button ---------------//
               Container(
                 child: RaisedButton(
-                    onPressed: () async{
-                      if(confirmpassword!=password){
-                        showAlertDialog(context,'Both passwords should match');
-                      }
-                      else if(password.length<8){
-                        showAlertDialog(context,'Password too short');
-                      }
-                      else{
+                    onPressed: () async {
+                      if (confirmpassword != password) {
+                        showAlertDialog(context, 'Both passwords should match');
+                      } else if (password.length < 8) {
+                        showAlertDialog(context, 'Password too short');
+                      } else {
                         try {
-                          final newUser = await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
                           if (newUser != null) {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context)=>Homepage())
-                            );
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
                           }
                         } catch (e) {
-                          showAlertDialog(context,'Invalid email or password');
+                          showAlertDialog(context, 'Invalid email or password');
                         }
                       }
                     },
                     color: Colors.pinkAccent[200],
                     child: Container(
                       height: 60,
-                      width: MediaQuery.of(context).size.width-150,
+                      width: MediaQuery.of(context).size.width - 150,
                       child: Center(
-                        child: Text('Register',style: TextStyle(
-                          fontSize: 25,
-                          letterSpacing: 5,
-                          color: Colors.white,
-                        ),),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                            fontSize: 25,
+                            letterSpacing: 5,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    )
-                ),
+                        borderRadius: BorderRadius.circular(50))),
               ),
             ],
           ),
@@ -227,14 +217,15 @@ showAlertDialog(BuildContext context, String str) {
   );
 }
 
-class MyClipper extends CustomClipper<Path>{
+class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = new Path();
-    path.lineTo(0, size.height-50);
-    var controlpoint = Offset(size.width/2, size.height);
-    var endpoint = Offset(size.width, size.height-50);
-    path.quadraticBezierTo(controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);
+    path.lineTo(0, size.height - 50);
+    var controlpoint = Offset(size.width / 2, size.height);
+    var endpoint = Offset(size.width, size.height - 50);
+    path.quadraticBezierTo(
+        controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);
     return path;

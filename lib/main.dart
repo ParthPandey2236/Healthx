@@ -1,11 +1,10 @@
-import 'package:elchackathon_app/SignUpPage.dart';
 import 'package:elchackathon_app/HomePage.dart';
-import 'package:flutter/material.dart';
+import 'package:elchackathon_app/SignUpPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(
@@ -28,17 +27,14 @@ class _LoginState extends State<Login> {
       //resizeToAvoidBottomPadding: false,
       //resizeToAvoidBottomInset: true,
       //backgroundColor: Colors.white,
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: new AssetImage('assets/PinkRibbon.jpg'),
-                  colorFilter:
-                  ColorFilter.mode(Colors.black.withOpacity(0.8),
-                      BlendMode.dstATop),
-                  fit: BoxFit.cover
-              )
-          ),
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                  fit: BoxFit.cover)),
           child: Column(
             children: [
               //-------- Login Container ---------//
@@ -61,22 +57,20 @@ class _LoginState extends State<Login> {
                 ),
               ),
               //-------- Username Text Box ---------//
-              SizedBox(height:10),
+              SizedBox(height: 10),
               Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-                width: MediaQuery.of(context).size.width-20,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(255, 182, 193, 1),
                         blurRadius: 20.0,
-                        offset: Offset(0,5),
+                        offset: Offset(0, 5),
                       ),
-                    ]
-                ),
-
+                    ]),
                 child: TextField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -88,29 +82,28 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   //-------- Username input stored in a String ---------//
-                  onChanged: (value){
+                  onChanged: (value) {
                     setState(() {
                       email = value;
                     });
                   },
                 ),
               ),
-              SizedBox(height:20),
+              SizedBox(height: 20),
               //-------- Password Text Box ---------//
               Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
-                width: MediaQuery.of(context).size.width-20,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(255, 182, 193, 1),
                         blurRadius: 20.0,
-                        offset: Offset(0,5),
+                        offset: Offset(0, 5),
                       ),
-                    ]
-                ),
+                    ]),
                 child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -122,8 +115,8 @@ class _LoginState extends State<Login> {
                   ),
                   //-------- Password input stored in a String ---------//
                   obscureText: true,
-                  onChanged: (value){
-                    setState((){
+                  onChanged: (value) {
+                    setState(() {
                       password = value;
                     });
                   },
@@ -133,67 +126,69 @@ class _LoginState extends State<Login> {
               //-------- Sign in button ---------//
               Container(
                 child: RaisedButton(
-                    onPressed: () async{
+                    onPressed: () async {
                       try {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context)=>Homepage())
-                          );
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
                         }
                       } catch (e) {
-                        showAlertDialog(context,'Invalid email or password');
+                        showAlertDialog(context, 'Invalid email or password');
                       }
                     },
                     color: Colors.pinkAccent[200],
                     child: Container(
                       height: 60,
-                      width: MediaQuery.of(context).size.width-150,
+                      width: MediaQuery.of(context).size.width - 150,
                       child: Center(
-                        child: Text('Sign in',style: TextStyle(
-                          fontSize: 25,
-                          letterSpacing: 5,
-                          color: Colors.white,
-                        ),),
+                        child: Text(
+                          'Sign in',
+                          style: TextStyle(
+                            fontSize: 25,
+                            letterSpacing: 5,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    )
-                ),
+                        borderRadius: BorderRadius.circular(50))),
               ),
               SizedBox(height: 20),
               //-------- Sign up button ---------//
               Container(
                 child: OutlineButton(
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context)=> SignUp()),
+                        MaterialPageRoute(builder: (context) => SignUp()),
                       );
                     },
                     borderSide: BorderSide(
                       color: Colors.pinkAccent[200],
                       style: BorderStyle.solid,
-                      width:3,
+                      width: 3,
                     ),
                     child: Container(
                       height: 60,
-                      width: MediaQuery.of(context).size.width-150,
+                      width: MediaQuery.of(context).size.width - 150,
                       child: Center(
-                        child: Text('Sign up',style: TextStyle(
-                          fontSize: 25,
-                          letterSpacing: 5,
-                          color: Colors.pinkAccent[200],
-                        ),),
+                        child: Text(
+                          'Sign up',
+                          style: TextStyle(
+                            fontSize: 25,
+                            letterSpacing: 5,
+                            color: Colors.pinkAccent[200],
+                          ),
+                        ),
                       ),
                     ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                    )
-                ),
+                        borderRadius: BorderRadius.circular(50))),
               ),
             ],
           ),
@@ -203,14 +198,15 @@ class _LoginState extends State<Login> {
   }
 }
 
-class MyClipper extends CustomClipper<Path>{
+class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = new Path();
-    path.lineTo(0, size.height-50);
-    var controlpoint = Offset(size.width/2, size.height);
-    var endpoint = Offset(size.width, size.height-50);
-    path.quadraticBezierTo(controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);
+    path.lineTo(0, size.height - 50);
+    var controlpoint = Offset(size.width / 2, size.height);
+    var endpoint = Offset(size.width, size.height - 50);
+    path.quadraticBezierTo(
+        controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);
     return path;
