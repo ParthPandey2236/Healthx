@@ -1,58 +1,107 @@
-import 'dart:ffi';
-
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:elchackathon_app/SymptomsPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Homepage extends StatefulWidget {
+import 'bottom_bar.dart';
+
+class HomePage extends StatefulWidget {
   @override
-  _HomepageState createState() => _HomepageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomepageState extends State<Homepage> {
-  final _auth = FirebaseAuth.instance;
+enum BottomIcons { Home, Favorite, Search, Account }
 
+class _HomePageState extends State<HomePage> {
+  BottomIcons bottomIcons = BottomIcons.Home;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-              }
+      body: Stack(
+        children: <Widget>[
+          bottomIcons == BottomIcons.Home
+              ? Center(
+                  child: Text(
+                    "Hi, this is home page",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : Container(),
+          bottomIcons == BottomIcons.Favorite
+              ? Center(
+                  child: Text(
+                    "Hi, this is favorite page",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : Container(),
+          bottomIcons == BottomIcons.Search
+              ? Center(
+                  child: Text(
+                    "Hi, this is search page",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : Container(),
+          bottomIcons == BottomIcons.Account
+              ? Center(
+                  child: Text(
+                    "Hi, this is account page",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : Container(),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Container(
+              padding: EdgeInsets.only(left: 24, right: 24, bottom: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  BottomBar(
+                      onPressed: () {
+                        setState(() {
+                          bottomIcons = BottomIcons.Home;
+                        });
+                      },
+                      bottomIcons:
+                          bottomIcons == BottomIcons.Home ? true : false,
+                      icons: EvaIcons.home,
+                      text: "Home"),
+                  BottomBar(
+                      onPressed: () {
+                        setState(() {
+                          bottomIcons = BottomIcons.Favorite;
+                        });
+                      },
+                      bottomIcons:
+                          bottomIcons == BottomIcons.Favorite ? true : false,
+                      icons: EvaIcons.heartOutline,
+                      text: "Favorite"),
+                  BottomBar(
+                      onPressed: () {
+                        setState(() {
+                          bottomIcons = BottomIcons.Search;
+                        });
+                      },
+                      bottomIcons:
+                          bottomIcons == BottomIcons.Search ? true : false,
+                      icons: EvaIcons.search,
+                      text: "Search"),
+                  BottomBar(
+                      onPressed: () {
+                        setState(() {
+                          bottomIcons = BottomIcons.Account;
+                        });
+                      },
+                      bottomIcons:
+                          bottomIcons == BottomIcons.Account ? true : false,
+                      icons: EvaIcons.personOutline,
+                      text: "Account"),
+                ],
+              ),
+            ),
           )
         ],
-      ),
-      body: Center(
-        child: Center(
-          child: RaisedButton(
-            onPressed: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>Symptoms())
-              );
-            },
-              color: Colors.pinkAccent[200],
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width-150,
-                child: Center(
-                  child: Text('Symptoms',style: TextStyle(
-                    fontSize: 25,
-                    letterSpacing: 5,
-                    color: Colors.white,
-                  ),),
-                ),
-              ),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)
-              )
-          ),
-        ),
       ),
     );
   }
