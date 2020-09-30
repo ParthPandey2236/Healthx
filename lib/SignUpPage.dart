@@ -33,7 +33,7 @@ class _SignUpState extends State<SignUp> {
                 height: 280,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  'Sign Up',
+                  'Register',
                   style: TextStyle(
                     fontSize: 70,
                     fontWeight: FontWeight.bold,
