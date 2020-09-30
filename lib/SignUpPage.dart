@@ -17,9 +17,10 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: new DecorationImage(
-                  image: new AssetImage('assets/PinkRibbon.jpg'),
+                  image: new AssetImage('assets/Pink.png'),
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.8), BlendMode.dstATop),
                   fit: BoxFit.cover)),
@@ -32,19 +33,19 @@ class _SignUpState extends State<SignUp> {
                 height: 280,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  'Sign\nUp',
+                  'Sign Up',
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 70,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.25,
-                    color: Colors.pinkAccent[200],
+                    color: Colors.pink[700],
                   ),
                 ),
               ),
               SizedBox(height: 20),
               // --------------- Username box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -76,7 +77,7 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 20),
               // --------------- Password box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -109,7 +110,7 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 20),
               // --------------- Confirm password box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -142,7 +143,7 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 40),
               // --------------- Register Button ---------------//
               Container(
-                child: RaisedButton(
+                child: FlatButton(
                     onPressed: () async {
                       if (confirmpassword != password) {
                         showAlertDialog(context, 'Both passwords should match');
@@ -154,13 +155,10 @@ class _SignUpState extends State<SignUp> {
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                            Navigator.pop(context);
                           }
                         } catch (e) {
-                          showAlertDialog(context, 'Invalid email or password');
+                          showAlertDialog(context, 'Username already registered');
                         }
                       }
                     },

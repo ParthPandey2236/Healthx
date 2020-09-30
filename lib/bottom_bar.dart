@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
@@ -18,35 +18,37 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: widget.onPressed,
-        child: widget.bottomIcons == true
-            ? Container(
-                decoration: BoxDecoration(
-                  color: Colors.indigo.shade100.withOpacity(0.6),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      widget.icons,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      widget.text,
-                      style: TextStyle(
-                          color: Colors.indigo,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
-                    ),
-                  ],
-                ),
-              )
-            : Icon(widget.icons));
+    return Container(
+      child: GestureDetector(
+          onTap: widget.onPressed,
+          child: widget.bottomIcons == true
+              ? Container(
+                  decoration: BoxDecoration(
+                    color: Colors.indigo.shade100.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  padding:
+                      EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        widget.icons,
+                        color: Colors.indigo,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        widget.text,
+                        style: TextStyle(
+                            color: Colors.indigo,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ],
+                  ),
+                )
+              : Icon(widget.icons)),
+    );
   }
 }
