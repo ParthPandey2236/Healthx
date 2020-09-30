@@ -3,12 +3,23 @@ import 'package:elchackathon_app/SignUpPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(MaterialApp(
+//     home: Login(),
+//   ));
+// }
+
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var status = prefs.getString('email');
   runApp(MaterialApp(
-    home: Login(),
+    home: status == null? Login(): HomePage(),
   ));
 }
 
@@ -29,37 +40,39 @@ class _LoginState extends State<Login> {
       //backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
+              color: Colors.white,
               image: new DecorationImage(
-                  image: new AssetImage('assets/PinkRibbon.jpg'),
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                  fit: BoxFit.cover)),
+                  image: new AssetImage('assets/Pink.png'),
+                  colorFilter:
+                  ColorFilter.mode(Colors.black.withOpacity(0.8),
+                      BlendMode.dstATop),
+                  fit: BoxFit.cover
+              )
+          ),
           child: Column(
             children: [
               //-------- Login Container ---------//
-              ClipPath(
-                clipper: MyClipper(),
-                child: Container(
-                  //color: Colors.pinkAccent[200],
-                  padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
-                  height: 270,
-                  width: MediaQuery.of(context).size.width,
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.25,
-                      color: Colors.pinkAccent[200],
-                    ),
+              Container(
+                //color: Colors.pinkAccent[200],
+                padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
+                height: 270,
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 70,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.25,
+                    color: Colors.pink[700],
                   ),
                 ),
               ),
               //-------- Username Text Box ---------//
               SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -92,7 +105,7 @@ class _LoginState extends State<Login> {
               SizedBox(height: 20),
               //-------- Password Text Box ---------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 200, 10),
+                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -125,12 +138,15 @@ class _LoginState extends State<Login> {
               SizedBox(height: 40),
               //-------- Sign in button ---------//
               Container(
-                child: RaisedButton(
+                child: FlatButton(
                     onPressed: () async {
                       try {
                         final user = await _auth.signInWithEmailAndPassword(
-                            email: email, password: password);
+                            email: email, password: password
+                        );
                         if (user != null) {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString('email',email);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -161,18 +177,13 @@ class _LoginState extends State<Login> {
               SizedBox(height: 20),
               //-------- Sign up button ---------//
               Container(
-                child: OutlineButton(
+                child: FlatButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SignUp()),
                       );
                     },
-                    borderSide: BorderSide(
-                      color: Colors.pinkAccent[200],
-                      style: BorderStyle.solid,
-                      width: 3,
-                    ),
                     child: Container(
                       height: 60,
                       width: MediaQuery.of(context).size.width - 150,
@@ -187,8 +198,13 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      side: BorderSide(color: Colors.pinkAccent[200],
+                      width: 3
+                      )
+                  ),
+                ),
               ),
             ],
           ),
