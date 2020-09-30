@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                 height: 270,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  'Login',
+                  'Sign in',
                   style: TextStyle(
                     fontSize: 70,
                     fontWeight: FontWeight.bold,
