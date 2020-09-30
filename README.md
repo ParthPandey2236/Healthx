@@ -11,8 +11,8 @@ Key features to be added:
   1) Soham Sakaria :-
   -> Edit Readme of this github repo
   -> Login/Register Page
-  -> Data base to store the login id of patient and doctor separate (gotta learn firebase bro)
-  -> symptoms page
+  -> Data base to store the login id of patient
+  -> symptoms page and calculate percentage 
   
   2) Parth Pandey :- 
   -> Diet and Excercise part
@@ -38,4 +38,3 @@ Key features to be added:
  3) probabilty calculator needs to discussed upon as to how we planning to do those as there can be a number of ways in doing so and I cannot estimate the load of the work.
  4) This is a very vague and rough division but we will discuss the flow of the app.
  
- # MEETING TODAY AT 10:30 PM - DISCUSS THE FLOW OF THE WORK AND DO SOMETHING TO SHOW - EVEN LOGIN PAGE KARDO COOL LAGEGA
