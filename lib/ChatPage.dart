@@ -17,7 +17,7 @@ class _ChatState extends State<Chat> {
       body: Container(
         color: Colors.grey[300],
         child:Center(
-          child: Text('Hello, this is chat page'),
+          child: Text('Hello, this is chat page. It will be a open group for doctors and patients to connect.'),
         ),
       ),
     );
