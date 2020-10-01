@@ -1,10 +1,9 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-//import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:elchackathon_app/SymptomsPage.dart';
-import 'package:elchackathon_app/ChatPage.dart';
 import 'package:elchackathon_app/AboutPage.dart';
+import 'package:elchackathon_app/ChatPage.dart';
 import 'package:elchackathon_app/DietPage.dart';
+import 'package:elchackathon_app/SymptomsPage.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/material.dart';
 
 import 'bottom_bar.dart';
 
@@ -26,24 +25,20 @@ class _HomePageState extends State<HomePage> {
             bottomIcons == BottomIcons.Symptoms
                 ? Symptoms() // edit in SymptomsPage.dart
                 : Container(),
-
             bottomIcons == BottomIcons.Chat
                 ? Chat() //edit in ChatPage.dart
                 : Container(),
-
             bottomIcons == BottomIcons.Diet
                 ? Diet() //edit in DietPage.dart
                 : Container(),
-
             bottomIcons == BottomIcons.About
                 ? About() //edit in AboutPage.dart
                 : Container(),
-
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                color: Colors.pinkAccent[200],
-                padding: EdgeInsets.only(left: 24, right: 24, bottom: 16, top: 16),
+                padding:
+                    EdgeInsets.only(left: 24, right: 24, bottom: 16, top: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

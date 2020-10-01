@@ -17,7 +17,7 @@ class _DietState extends State<Diet> {
       body: Container(
         color: Colors.grey[300],
         child:Center(
-          child: Text('Hello, this is diet and exercise page'),
+          child: Text('Hello, this is diet and exercise page to reduce the chances of breast cancer.'),
         ),
       ),
     );
