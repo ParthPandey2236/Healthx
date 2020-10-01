@@ -94,7 +94,7 @@ class _AboutState extends State<About> {
               ),
               CircleAvatar(
                 radius: 50.0,
-                backgroundImage: AssetImage('assets/Eeshan (3).jpg'),
+                backgroundImage: AssetImage('assets/Parth Srivastava.jpeg'),
               ),
               Text(
                 'Parth Srivastava',
