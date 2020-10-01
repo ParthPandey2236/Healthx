@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:elchackathon_app/ChatPage.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  currentUserEmail();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var status = prefs.getString('email');
   runApp(MaterialApp(
@@ -146,7 +148,10 @@ class _LoginState extends State<Login> {
                         );
                         if (user != null) {
                           final prefs = await SharedPreferences.getInstance();
+                          prefs.remove('email');
                           prefs.setString('email',email);
+                          currentUserEmail();
+                          MessagesStream();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
