@@ -5,7 +5,7 @@ import 'package:elchackathon_app/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 String email;
-Future<void> f() async{
+Future<void> currentUserEmail() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   email=prefs.getString('email');
 }
@@ -100,7 +100,7 @@ class MessagesStream extends StatelessWidget {
           final messageSender = message.data()['sender'];
 
           String currentUser = email;
-          f();
+          currentUserEmail();
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
