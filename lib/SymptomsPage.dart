@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+int Total_female_symptoms = 20;
+int Total_male_symptoms = 4;
 
 class Symptoms extends StatefulWidget {
   @override
@@ -8,20 +9,19 @@ class Symptoms extends StatefulWidget {
 
 class _SymptomsState extends State<Symptoms> {
   @override
+  void initState(){
+    Total_female_symptoms = 20;
+    Total_male_symptoms = 4;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height-75,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: Colors.white,
-          // image: new DecorationImage(
-          //     image: new AssetImage('assets/Pink.png'),
-          //     colorFilter:
-          //     ColorFilter.mode(Colors.black.withOpacity(0.2),
-          //         BlendMode.dstATop),
-          //     fit: BoxFit.cover
-          // )
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -30,7 +30,7 @@ class _SymptomsState extends State<Symptoms> {
                 clipper: MyClipper(),
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                  height:90,
+                  height:100,
                   width: MediaQuery.of(context).size.width,
                   child: Center(
                     child: Text(
@@ -38,15 +38,7 @@ class _SymptomsState extends State<Symptoms> {
                       style: TextStyle(fontSize: 35,color:Colors.white,letterSpacing: 1.5),
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.pinkAccent[200],
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromRGBO(255, 182, 193, 1),
-                          blurRadius: 50.0,
-                          offset: Offset(0,100),
-                        ),]
-                  ),
+                  color:Color(0xff667aff),
                 ),
               ),
               SizedBox(height: 20,),
@@ -68,12 +60,12 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(text: 'Skin changes, such as swelling, redness, or other visible differences in one or both breasts\n'),
-              CustomText(text:'Changes in the appearance of one or both nipples\n'),
-              CustomText(text:'Nipple discharge other than breast milk\n'),
-              CustomText(text:'General pain in/on any part of the breast\n'),
-              CustomText(text:'Lumps or nodes felt on or inside of the breast\n',),
-              SizedBox(height :30),
+              CustomText(text: 'Skin changes, such as swelling, redness, or other visible differences in one or both breasts\n',value:false),
+              CustomText(text:'Changes in the appearance of one or both nipples\n',value:false),
+              CustomText(text:'Nipple discharge other than breast milk\n',value:false),
+              CustomText(text:'General pain in/on any part of the breast\n',value:false),
+              CustomText(text:'Lumps or nodes felt on or inside of the breast\n',value:false),
+              //SizedBox(height :30),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                 child: Text(
@@ -82,13 +74,13 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height:30),
-              CustomText(text: 'Irritated or itchy breasts\n'),
-              CustomText(text:'Change in breast color\n'),
-              CustomText(text:'Increase in breast size or shape (over a short period of time)\n'),
-              CustomText(text:'Changes in touch (may feel hard, tender or warm)\n'),
-              CustomText(text:'Peeling or flaking of the nipple skin\n'),
-              CustomText(text:'A breast lump or thickening\n',),
-              CustomText(text:'Redness or pitting of the breast skin (like the skin of an orange) ',),
+              CustomText(text: 'Irritated or itchy breasts\n',value:false),
+              CustomText(text:'Change in breast color\n',value:false),
+              CustomText(text:'Increase in breast size or shape (over a short period of time)\n',value:false),
+              CustomText(text:'Changes in touch (may feel hard, tender or warm)\n',value:false),
+              CustomText(text:'Peeling or flaking of the nipple skin\n',value:false),
+              CustomText(text:'A breast lump or thickening\n',value:false),
+              CustomText(text:'Redness or pitting of the breast skin (like the skin of an orange) ',value:false),
 
               SizedBox(height: 30,),
               Container(
@@ -139,14 +131,14 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(text: 'Red, swollen, itchy breast that is tender to the touch\n'),
-              CustomText(text:'The surface of the breast may take on a ridged or pitted appearance, similar to an orange peel (often called peau d’orange)\n'),
-              CustomText(text:'Heaviness, burning, or aching in one breast\n'),
-              CustomText(text:'One breast is visibly larger than the other\n'),
-              CustomText(text:'Inverted nipple (facing inward)\n'),
-              CustomText(text:'No mass is felt with a breast self-exam\n',),
-              CustomText(text:'Swollen lymph nodes under the arm and/or above the collarbone\n',),
-              CustomText(text: 'Symptoms unresolved after a course of antibiotics'),
+              CustomText(text: 'Red, swollen, itchy breast that is tender to the touch\n',value:false),
+              CustomText(text:'The surface of the breast may take on a ridged or pitted appearance, similar to an orange peel (often called peau d’orange)\n',value:false),
+              CustomText(text:'Heaviness, burning, or aching in one breast\n',value:false),
+              CustomText(text:'One breast is visibly larger than the other\n',value:false),
+              CustomText(text:'Inverted nipple (facing inward)\n',value:false),
+              CustomText(text:'No mass is felt with a breast self-exam\n',value:false),
+              CustomText(text:'Swollen lymph nodes under the arm and/or above the collarbone\n',value:false),
+              CustomText(text: 'Symptoms unresolved after a course of antibiotics',value:false),
               SizedBox(height: 30),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
@@ -166,11 +158,33 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(text: 'Lumps in the breast, usually painless\n'),
-              CustomText(text:'Thickening of the breast\n'),
-              CustomText(text:'Changes to the nipple or breast skin, such as dimpling, puckering or redness\n'),
-              CustomText(text:'Discharge of fluid from the nipples\n'),
+              CustomText(text: 'Lumps in the breast, usually painless\n',value:false),
+              CustomText(text:'Thickening of the breast\n',value:false),
+              CustomText(text:'Changes to the nipple or breast skin, such as dimpling, puckering or redness\n',value:false),
+              CustomText(text:'Discharge of fluid from the nipples\n',value:false),
               SizedBox(height:10),
+              Container(
+                //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: FlatButton(
+                  onPressed: (){
+                    chooseGenderDialog(context);
+                  },
+                  color: Color(0xff667aff),
+                  child: Container(
+                    child: Text('Make a Prediction',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+                height: 50,
+                width: 200,
+              ),
+              SizedBox(height:80),
             ],
           ),
         ),
@@ -178,34 +192,83 @@ class _SymptomsState extends State<Symptoms> {
     );
   }
 }
+Future<dynamic> SetDefault() {
+  Total_female_symptoms = 20;
+  Total_male_symptoms = 4;
+}
 
-class CustomText extends StatelessWidget {
+class CustomText extends StatefulWidget {
+  CustomText({this.text,this.value});
   final String text;
-  final double height;
+  bool value=false;
+  @override
+  _CustomTextState createState() => _CustomTextState();
+}
 
-  CustomText({this.text,this.height});
-
+class _CustomTextState extends State<CustomText> {
+  int total = 0;
+  bool checkBoxvalue=false;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
       child: ListTile(
-        leading: Container(
-          height: 10,
-          width: 10,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.black,
+        leading:Container(
+          padding:EdgeInsets.only(bottom:20),
+          height: 50,
+          width: 50,
+          child: Checkbox(
+            value: widget.value,
+            activeColor: Colors.pinkAccent[200],
+            onChanged: (bool val){
+              CalculateSymptoms();
+              setState(() {
+                widget.value=val;
+              });
+            },
           ),
         ),
-        title: Transform(
-          transform: Matrix4.translationValues(-25, 0.0, 0.0),
-          child: Text(
-              text,
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 18)),
-        ),
+        title: Text(
+            widget.text,
+            style: TextStyle(fontStyle: FontStyle.italic, fontSize: 18
+            )),
       ),
     );
+  }
+
+  void CalculateSymptoms() {
+    if(widget.text == 'Lumps in the breast, usually painless\n'){
+      if(widget.value==true)
+        Total_male_symptoms+=1;
+      else
+        Total_male_symptoms-=1;
+    }
+    else if(widget.text == 'Thickening of the breast\n'){
+      if(widget.value==true)
+        Total_male_symptoms+=1;
+      else
+        Total_male_symptoms-=1;
+    }
+    else if(widget.text == 'Changes to the nipple or breast skin, such as dimpling, puckering or redness\n')
+    {
+      if(widget.value==true)
+        Total_male_symptoms+=1;
+      else
+        Total_male_symptoms-=1;
+    }
+    else if(widget.text == 'Discharge of fluid from the nipples\n'){
+      if(widget.value==true)
+        Total_male_symptoms+=1;
+      else
+        Total_male_symptoms-=1;
+    }
+    else{
+      if(widget.value==true)
+        Total_female_symptoms+=1;
+      else
+        Total_female_symptoms-=1;
+    }
+    print(widget.value.toString()+Total_female_symptoms.toString()+Total_male_symptoms.toString());
   }
 }
 
@@ -226,4 +289,110 @@ class MyClipper extends CustomClipper<Path>{
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return true;
   }
+}
+chooseGenderDialog(BuildContext context) {
+  // Create button
+  Widget cancelButton = FlatButton(
+    child: Text("Cancel",
+      style: TextStyle(
+        fontSize: 20,
+      ),),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  Widget ChooseMaleGender = FlatButton(
+    child:Text("Male",
+      style: TextStyle(
+        fontSize: 20,
+      ),),
+    onPressed:(){
+      Navigator.of(context).pop();
+      calculatePrediction(context,'Male');
+    },
+  );
+  Widget ChooseFemaleGender = FlatButton(
+    child:Text("Female",
+      style: TextStyle(
+        fontSize: 20,
+      ),),
+    onPressed:(){
+      Navigator.of(context).pop();
+      calculatePrediction(context,'Female');
+    },
+  );
+
+  Widget ChooseOtherGender = FlatButton(
+    child:Text("Others",
+      style: TextStyle(
+        fontSize: 20,
+      ),),
+    onPressed:(){
+      Navigator.of(context).pop();
+      calculatePrediction(context,'Others');
+    },
+  );
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Choose your gender"),
+    actions: [
+      ChooseMaleGender,
+      ChooseFemaleGender,
+      ChooseOtherGender,
+      cancelButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+calculatePrediction(BuildContext context,String text) {
+  Widget okButton = FlatButton(
+    child: Text("OK",
+      style: TextStyle(
+        fontSize: 20,
+      ),),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text(text),
+    content: Container(
+      height: MediaQuery.of(context).size.height/5,
+      child: Column(
+        children: [
+          if(text=='Male')
+            Text(((4-Total_male_symptoms)*25).toString()+'%\n',
+                style: TextStyle(fontSize:30))
+          else if(text=='Female')
+            Text(((20-Total_female_symptoms)*5).toString()+'%\n',
+                style: TextStyle(fontSize:30))
+          else
+            Text(((24-Total_male_symptoms-Total_female_symptoms)*4).toString()+'%\n',
+                style: TextStyle(fontSize:30)),
+          Text("This is in no way a perfect prediction. This is just a rough estimate based on the symptoms you selected"),
+        ],
+      ),
+    ),
+    actions: [
+      okButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
