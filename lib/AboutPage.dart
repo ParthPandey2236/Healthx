@@ -43,13 +43,13 @@ class _AboutState extends State<About> {
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      side: BorderSide(color: Colors.white)),
+                      side: BorderSide(color: Colors.black)),
                 ),
               ),
               Container(
                 color: Color(0xff667aff),
                 child: Text(
-                  'About the App ',
+                  'About the App',
                   style: TextStyle(
                     fontFamily: 'Pacifico',
                     fontSize: 40.0,

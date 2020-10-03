@@ -6,7 +6,7 @@ class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
 }
-
+int divisions = 20;
 class _SignUpState extends State<SignUp> {
   final _auth = FirebaseAuth.instance;
   String email;
@@ -17,54 +17,45 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: new DecorationImage(
-                  image: new AssetImage('assets/Pink.png'),
+                  image: new  AssetImage('assets/LoginBackground.jpg'),
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                      Colors.black.withOpacity(1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
-              // --------------- Sign Up Container ---------------//
-              Container(
-                //color: Colors.white,
-                padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
-                height: 280,
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  'Register',
-                  style: TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.25,
-                    color: Colors.pink[700],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).size.height/divisions*7),
               // --------------- Username box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
-                width: MediaQuery.of(context).size.width - 20,
+                height:50,
+                width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 182, 193, 1),
-                        blurRadius: 20.0,
-                        offset: Offset(0, 5),
-                      ),
-                    ]),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: TextField(
-                    keyboardType: TextInputType.emailAddress,
+                    textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Email Id',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      hintText: ' Email Id',
                       hintStyle: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 20.0,
+                        color: Color.fromRGBO(255, 192, 203, 0.8),
+                        fontSize: 25.0,
+                        //fontWeight: FontWeight.bold,
                       ),
                     ),
                     // ----- Username input stored in a string -----//
@@ -74,28 +65,35 @@ class _SignUpState extends State<SignUp> {
                       });
                     }),
               ),
-              SizedBox(height: 20),
+              SizedBox(height:MediaQuery.of(context).size.height/divisions),
               // --------------- Password box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
-                width: MediaQuery.of(context).size.width - 20,
+                height:50,
+                width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 182, 193, 1),
-                        blurRadius: 20.0,
-                        offset: Offset(0, 5),
-                      ),
-                    ]),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Password',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    hintText: ' Password',
                     hintStyle: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 20.0,
+                      color: Color.fromRGBO(255, 192, 203, 0.8),
+                      fontSize: 25.0,
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                   // ----- Password input stored in a string -----//
@@ -107,28 +105,35 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).size.height/divisions),
               // --------------- Confirm password box ---------------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
-                width: MediaQuery.of(context).size.width - 20,
+                height:50,
+                width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 182, 193, 1),
-                        blurRadius: 20.0,
-                        offset: Offset(0, 5),
-                      ),
-                    ]),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Confirm Password',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    hintText: ' Confirm Password',
                     hintStyle: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 20.0,
+                      color: Color.fromRGBO(255, 192, 203, 0.8),
+                      fontSize: 25.0,
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                   // ---- Confirm password input stored in a string ----//
@@ -140,9 +145,10 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: MediaQuery.of(context).size.height/divisions*1),
               // --------------- Register Button ---------------//
               Container(
+                padding: EdgeInsets.only(left:MediaQuery.of(context).size.width-200),
                 child: FlatButton(
                     onPressed: () async {
                       if (confirmpassword != password) {
@@ -162,23 +168,27 @@ class _SignUpState extends State<SignUp> {
                         }
                       }
                     },
-                    color: Colors.pinkAccent[200],
-                    child: Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width - 150,
-                      child: Center(
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                            fontSize: 25,
-                            letterSpacing: 5,
-                            color: Colors.white,
-                          ),
+                  color: Color.fromRGBO(255, 192, 203, 1),
+                  child: Container(
+                    height: 50,
+                    width: 120,
+                    child: Center(
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 25,
+                          letterSpacing:2,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    side:BorderSide(color: Colors.white,width: 3
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
