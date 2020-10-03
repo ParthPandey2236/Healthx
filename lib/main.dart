@@ -15,6 +15,8 @@ import 'package:elchackathon_app/ChatPage.dart';
 //   ));
 // }
 
+int divisions = 13;
+
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -43,7 +45,7 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height-100,
+          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -57,23 +59,8 @@ class _LoginState extends State<Login> {
           ),
           child: Column(
             children: [
-              Container(
-                //color: Colors.pinkAccent[200],
-                padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
-                height: 270,
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  '',
-                  style: TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.25,
-                    color: Colors.pink[700],
-                  ),
-                ),
-              ),
               //-------- Username Text Box ---------//
-              SizedBox(height: 50),
+              SizedBox(height: (MediaQuery.of(context).size.height/divisions)*5),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width-70,
@@ -110,7 +97,7 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: MediaQuery.of(context).size.height/divisions*0.5),
               //-------- Password Text Box ---------//
               Container(
                 height:50,
@@ -150,7 +137,7 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: MediaQuery.of(context).size.height/divisions*0.5),
               //-------- Login button ---------//
               Container(
                 padding: EdgeInsets.only(left:MediaQuery.of(context).size.width-200),
@@ -198,7 +185,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               //-------- Sign up button ---------//
-              SizedBox(height: 100),
+              SizedBox(height: (MediaQuery.of(context).size.height/divisions)*2),
               Container(
                 child: FlatButton(
                     onPressed: () {
@@ -209,7 +196,7 @@ class _LoginState extends State<Login> {
                     },
                     color: Color.fromRGBO(255, 192, 203, 1),
                     child: Container(
-                      height: 60,
+                      height: 50,
                       width: 220,
                       child: Center(
                         child: Text(
