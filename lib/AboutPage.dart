@@ -43,9 +43,9 @@ class _AboutState extends State<About> {
                         }),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(0.0),
                     child: Container(
-                      margin: EdgeInsets.only(left: 50.0, top: 5, right: 1),
+                      margin: EdgeInsets.only(left: 50.0, top: 5),
                       child: FlatButton(
                         onPressed: () async {
                           //SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -156,7 +156,7 @@ class _AboutState extends State<About> {
                           backgroundImage: AssetImage('assets/Soham.jpg'),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
@@ -185,7 +185,7 @@ class _AboutState extends State<About> {
                                 AssetImage('assets/parth pandey.jpg'),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(0.0),
                             child: Container(
                               color: Colors.white,
                               child: Text(
@@ -212,7 +212,7 @@ class _AboutState extends State<About> {
                               AssetImage('assets/Parth Srivastava.jpeg'),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
