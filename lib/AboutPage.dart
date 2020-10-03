@@ -2,7 +2,7 @@ import 'package:elchackathon_app/main.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:custom_switch/custom_switch.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,8 +16,9 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  String language="हिंदी";
-   bool status=false;
+  bool status = true;
+  String language = "हिंदी";
+  int a = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,64 +29,42 @@ class _AboutState extends State<About> {
             padding: EdgeInsets.only(bottom: 150.0),
             child: Column(
               children: <Widget>[
-                Row(
-                children:[
-                  CustomSwitch(
-
-                    activeColor: Colors.pink,
-                    value: status,
-                    onChanged: (value) {
-                      status = value;
-                      if(status=="true"){
-                        language="English";
-                      }
-                      else{
-                        language="हिंदी";
-                      }
-                    },
-
+                Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(11.0),
+                    child: ToggleSwitch(
+                        minWidth: 90.0,
+                        cornerRadius: 20,
+                        activeBgColor: Colors.pink,
+                        inactiveBgColor: Colors.white,
+                        labels: ["हिंदी", "English"],
+                        onToggle: (index) {
+                          print('switched to: $index');
+                        }),
                   ),
-                  Text(
-                    language,
-                    style: TextStyle(
-                      fontSize: 20.0,
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      margin: EdgeInsets.only(left: 65, top: 5),
+                      child: FlatButton(
+                        onPressed: () async {
+                          //SharedPreferences prefs = await SharedPreferences.getInstance();
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.setString('email', null);
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Login()));
+                        },
+                        child: Icon(
+                          EvaIcons.logOutOutline,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(color: Colors.black)),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                Container(
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width -90,
-
-                      top: 10,
-                      right: 20),
-                  child: FlatButton(
-                    onPressed: () async {
-                      //SharedPreferences prefs = await SharedPreferences.getInstance();
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setString('email', null);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
-                    },
-                    child: Icon(
-                      EvaIcons.logOutOutline,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(color: Colors.black)),
-                  ),
-                ),
-
-                  Text(
-                    language,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  )
-                ]
-                ),
+                ]),
                 Container(
                   color: Color(0xff667aff),
                   child: Text(
@@ -144,7 +123,8 @@ class _AboutState extends State<About> {
                         children: <Widget>[
                           CircleAvatar(
                             radius: 50.0,
-                            backgroundImage: AssetImage('assets/Eeshan (3).jpg'),
+                            backgroundImage:
+                                AssetImage('assets/Eeshan (3).jpg'),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
