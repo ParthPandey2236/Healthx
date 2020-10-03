@@ -2,6 +2,7 @@ import 'package:elchackathon_app/HomePage.dart';
 import 'package:elchackathon_app/SignUpPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:elchackathon_app/ChatPage.dart';
@@ -39,30 +40,30 @@ class _LoginState extends State<Login> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       //resizeToAvoidBottomInset: true,
-      //backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height-100,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: Colors.white,
               image: new DecorationImage(
-                  image: new AssetImage('assets/Pink.png'),
+                  image: new AssetImage('assets/LoginBackground.jpg'),
                   colorFilter:
-                  ColorFilter.mode(Colors.black.withOpacity(0.8),
+                  ColorFilter.mode(Colors.black.withOpacity(1),
                       BlendMode.dstATop),
                   fit: BoxFit.cover
               )
           ),
           child: Column(
             children: [
-              //-------- Login Container ---------//
               Container(
                 //color: Colors.pinkAccent[200],
                 padding: EdgeInsets.fromLTRB(10, 150, 0, 0),
                 height: 270,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  'Login',
+                  '',
                   style: TextStyle(
                     fontSize: 70,
                     fontWeight: FontWeight.bold,
@@ -72,28 +73,33 @@ class _LoginState extends State<Login> {
                 ),
               ),
               //-------- Username Text Box ---------//
-              SizedBox(height: 10),
+              SizedBox(height: 50),
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
-                width: MediaQuery.of(context).size.width - 20,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 182, 193, 1),
-                        blurRadius: 20.0,
-                        offset: Offset(0, 5),
-                      ),
-                    ]),
+                height: 50,
+                width: MediaQuery.of(context).size.width-70,
+                //padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
+                color:Colors.white,
                 child: TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Email Id',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                      width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    hintText: ' Email',
                     hintStyle: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 20.0,
+                      color: Color.fromRGBO(255, 192, 203, 0.8),
+                      fontSize: 25.0,
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                   //-------- Username input stored in a String ---------//
@@ -104,28 +110,35 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 40),
               //-------- Password Text Box ---------//
               Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 40, 10),
-                width: MediaQuery.of(context).size.width - 20,
+                height:50,
+                width: MediaQuery.of(context).size.width - 70,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 182, 193, 1),
-                        blurRadius: 20.0,
-                        offset: Offset(0, 5),
-                      ),
-                    ]),
+                ),
                 child: TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Password',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    hintText: ' Password',
                     hintStyle: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 20.0,
+                      color: Color.fromRGBO(255, 192, 203, 0.8),
+                      fontSize: 25.0,
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                   //-------- Password input stored in a String ---------//
@@ -138,8 +151,9 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(height: 40),
-              //-------- Sign in button ---------//
+              //-------- Login button ---------//
               Container(
+                padding: EdgeInsets.only(left:MediaQuery.of(context).size.width-200),
                 child: FlatButton(
                     onPressed: () async {
                       try {
@@ -161,26 +175,30 @@ class _LoginState extends State<Login> {
                         showAlertDialog(context, 'Invalid email or password');
                       }
                     },
-                    color: Colors.pinkAccent[200],
+                    color: Color.fromRGBO(255, 192, 203, 1),
                     child: Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width - 150,
+                      height: 50,
+                      width: 100,
                       child: Center(
                         child: Text(
-                          'Sign in',
+                          'Login',
                           style: TextStyle(
                             fontSize: 25,
-                            letterSpacing: 5,
+                            letterSpacing:2,
                             color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
+                        borderRadius: BorderRadius.circular(50),
+                    side:BorderSide(color: Colors.white,width: 3
+                      ),
+                    ),
+                ),
               ),
-              SizedBox(height: 20),
               //-------- Sign up button ---------//
+              SizedBox(height: 100),
               Container(
                 child: FlatButton(
                     onPressed: () {
@@ -189,25 +207,23 @@ class _LoginState extends State<Login> {
                         MaterialPageRoute(builder: (context) => SignUp()),
                       );
                     },
+                    color: Color.fromRGBO(255, 192, 203, 1),
                     child: Container(
                       height: 60,
-                      width: MediaQuery.of(context).size.width - 150,
+                      width: 220,
                       child: Center(
                         child: Text(
                           'Sign up',
                           style: TextStyle(
                             fontSize: 25,
                             letterSpacing: 5,
-                            color: Colors.pinkAccent[200],
+                              color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: Colors.pinkAccent[200],
-                      width: 3
-                      )
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                 ),
               ),
