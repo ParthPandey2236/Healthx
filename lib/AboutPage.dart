@@ -22,7 +22,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.pinkAccent[100],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -45,7 +45,7 @@ class _AboutState extends State<About> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      margin: EdgeInsets.only(left: 65, top: 5),
+                      margin: EdgeInsets.only(left: 50.0, top: 5, right: 1),
                       child: FlatButton(
                         onPressed: () async {
                           //SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -60,19 +60,19 @@ class _AboutState extends State<About> {
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: Colors.black)),
+                            side: BorderSide(color: Colors.white)),
                       ),
                     ),
                   ),
                 ]),
                 Container(
-                  color: Color(0xff667aff),
+                  color: Colors.white,
                   child: Text(
                     'About the App',
                     style: TextStyle(
-                      fontFamily: 'Pacifico',
-                      fontSize: 40.0,
-                      color: Colors.black,
+                      fontFamily: 'SansitaSwashed',
+                      fontSize: 50.0,
+                      color: Colors.pinkAccent[100],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -81,7 +81,7 @@ class _AboutState extends State<About> {
                   width: 150.0,
                   height: 20.0,
                   child: Divider(
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 Padding(
@@ -91,20 +91,23 @@ class _AboutState extends State<About> {
                     style: TextStyle(
                       fontFamily: 'SansitaSwashed',
                       fontSize: 20.0,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                Container(
-                  color: Color(0xff667aff),
-                  child: Text(
-                    'Developers',
-                    style: TextStyle(
-                      fontFamily: 'Pacifico',
-                      fontSize: 40.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    color: Colors.white,
+                    child: Text(
+                      'Developers',
+                      style: TextStyle(
+                        fontFamily: 'SansitaSwashed',
+                        fontSize: 50.0,
+                        color: Colors.pinkAccent[100],
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -112,7 +115,7 @@ class _AboutState extends State<About> {
                   width: 150.0,
                   height: 20.0,
                   child: Divider(
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 Row(
@@ -129,13 +132,13 @@ class _AboutState extends State<About> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              color: Color(0xff667aff),
+                              color: Colors.white,
                               child: Text(
                                 'Eeshan Dutta',
                                 style: TextStyle(
-                                  fontFamily: 'Pacifico',
+                                  fontFamily: 'SansitaSwashed',
                                   fontSize: 20.0,
-                                  color: Colors.black,
+                                  color: Colors.pinkAccent[100],
                                 ),
                               ),
                             ),
@@ -155,13 +158,13 @@ class _AboutState extends State<About> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            color: Color(0xff667aff),
+                            color: Colors.white,
                             child: Text(
                               'Soham Sakaria',
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
-                                color: Colors.black,
+                                color: Colors.pinkAccent[100],
                               ),
                             ),
                           ),
@@ -184,13 +187,13 @@ class _AboutState extends State<About> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              color: Color(0xff667aff),
+                              color: Colors.white,
                               child: Text(
                                 'Parth Pandey',
                                 style: TextStyle(
                                   fontFamily: 'Pacifico',
                                   fontSize: 20.0,
-                                  color: Colors.black,
+                                  color: Colors.pinkAccent[100],
                                 ),
                               ),
                             ),
@@ -211,13 +214,13 @@ class _AboutState extends State<About> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            color: Color(0xff667aff),
+                            color: Colors.white,
                             child: Text(
                               'Parth Srivastava',
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
-                                color: Colors.black,
+                                color: Colors.pinkAccent[100],
                               ),
                             ),
                           ),
