@@ -20,10 +20,11 @@ class _SymptomsState extends State<Symptoms> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        //padding: EdgeInsets.only(left:40),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xfffeebe7),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -43,7 +44,7 @@ class _SymptomsState extends State<Symptoms> {
                           letterSpacing: 1.5),
                     ),
                   ),
-                  color: Color(0xff667aff),
+                  color: Color(0xfff1a3a1),
                 ),
               ),
               SizedBox(
@@ -53,7 +54,7 @@ class _SymptomsState extends State<Symptoms> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Text(
                   'Early Warning signs of breast cancer',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40,color: Color(0xfff1a3a1)),
                 ),
               ),
               SizedBox(height: 30),
@@ -67,23 +68,37 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(
-                  text:
-                      'Skin changes, such as swelling, redness, or other visible differences in one or both breasts\n',
-                  value: false),
-              CustomText(
-                  text: 'Changes in the appearance of one or both nipples\n',
-                  value: false),
-              CustomText(
-                  text: 'Nipple discharge other than breast milk\n',
-                  value: false),
-              CustomText(
-                  text: 'General pain in/on any part of the breast\n',
-                  value: false),
-              CustomText(
-                  text: 'Lumps or nodes felt on or inside of the breast\n',
-                  value: false),
-              //SizedBox(height :30),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width-30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.pinkAccent),
+                  color: Color.fromRGBO(255, 192, 203, 0.1),
+                ),
+                child: Column(
+                  children: [
+                    CustomText(
+                        text:
+                            'Skin changes, such as swelling, redness, or other visible differences in one or both breasts\n',
+                        value: false),
+                    CustomText(
+                        text: 'Changes in the appearance of one or both nipples\n',
+                        value: false),
+                    CustomText(
+                        text: 'Nipple discharge other than breast milk\n',
+                        value: false),
+                    CustomText(
+                        text: 'General pain in/on any part of the breast\n',
+                        value: false),
+                    CustomText(
+                        text: 'Lumps or nodes felt on or inside of the breast\n',
+                        value: false),
+                  ],
+                ),
+              ),
+
+              SizedBox(height :30),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                 child: Text(
@@ -92,23 +107,37 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(text: 'Irritated or itchy breasts\n', value: false),
-              CustomText(text: 'Change in breast color\n', value: false),
-              CustomText(
-                  text:
-                      'Increase in breast size or shape (over a short period of time)\n',
-                  value: false),
-              CustomText(
-                  text: 'Changes in touch (may feel hard, tender or warm)\n',
-                  value: false),
-              CustomText(
-                  text: 'Peeling or flaking of the nipple skin\n',
-                  value: false),
-              CustomText(text: 'A breast lump or thickening\n', value: false),
-              CustomText(
-                  text:
-                      'Redness or pitting of the breast skin (like the skin of an orange) ',
-                  value: false),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width-30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.pinkAccent),
+                  color: Color.fromRGBO(255, 192, 203, 0.1),
+                ),
+                child: Column(
+                  children: [
+                    CustomText(text: 'Irritated or itchy breasts\n', value: false),
+                    CustomText(text: 'Change in breast color\n', value: false),
+                    CustomText(
+                        text:
+                        'Increase in breast size or shape (over a short period of time)\n',
+                        value: false),
+                    CustomText(
+                        text: 'Changes in touch (may feel hard, tender or warm)\n',
+                        value: false),
+                    CustomText(
+                        text: 'Peeling or flaking of the nipple skin\n',
+                        value: false),
+                    CustomText(text: 'A breast lump or thickening\n', value: false),
+                    CustomText(
+                        text:
+                        'Redness or pitting of the breast skin (like the skin of an orange) ',
+                        value: false),
+                  ],
+                ),
+              ),
+
 
               SizedBox(
                 height: 30,
@@ -117,7 +146,8 @@ class _SymptomsState extends State<Symptoms> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Text(
                   'Ductal carcinoma symptoms',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40,color: Color(0xfff1a3a1)),
+
                 ),
               ),
               SizedBox(height: 30),
@@ -133,7 +163,7 @@ class _SymptomsState extends State<Symptoms> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Text(
                   'Lobular carcinoma symptoms',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40,color: Color(0xfff1a3a1)),
                 ),
               ),
               SizedBox(height: 30),
@@ -149,7 +179,7 @@ class _SymptomsState extends State<Symptoms> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Text(
                   'Inflammatory breast cancer symptoms',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40,color: Color(0xfff1a3a1)),
                 ),
               ),
               SizedBox(height: 30),
@@ -161,32 +191,46 @@ class _SymptomsState extends State<Symptoms> {
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(
-                  text:
-                      'Red, swollen, itchy breast that is tender to the touch\n',
-                  value: false),
-              CustomText(
-                  text:
-                      'The surface of the breast may take on a ridged or pitted appearance, similar to an orange peel (often called peau d’orange)\n',
-                  value: false),
-              CustomText(
-                  text: 'Heaviness, burning, or aching in one breast\n',
-                  value: false),
-              CustomText(
-                  text: 'One breast is visibly larger than the other\n',
-                  value: false),
-              CustomText(
-                  text: 'Inverted nipple (facing inward)\n', value: false),
-              CustomText(
-                  text: 'No mass is felt with a breast self-exam\n',
-                  value: false),
-              CustomText(
-                  text:
-                      'Swollen lymph nodes under the arm and/or above the collarbone\n',
-                  value: false),
-              CustomText(
-                  text: 'Symptoms unresolved after a course of antibiotics',
-                  value: false),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width-30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.pinkAccent),
+                  color: Color.fromRGBO(255, 192, 203, 0.1),
+                ),
+                child: Column(
+                  children: [
+                    CustomText(
+                        text:
+                            'Red, swollen, itchy breast that is tender to the touch\n',
+                        value: false),
+                    CustomText(
+                        text:
+                        'The surface of the breast may take on a ridged or pitted appearance, similar to an orange peel (often called peau d’orange)\n',
+                        value: false),
+                    CustomText(
+                        text: 'Heaviness, burning, or aching in one breast\n',
+                        value: false),
+                    CustomText(
+                        text: 'One breast is visibly larger than the other\n',
+                        value: false),
+                    CustomText(
+                        text: 'Inverted nipple (facing inward)\n', value: false),
+                    CustomText(
+                        text: 'No mass is felt with a breast self-exam\n',
+                        value: false),
+                    CustomText(
+                        text:
+                        'Swollen lymph nodes under the arm and/or above the collarbone\n',
+                        value: false),
+                    CustomText(
+                        text: 'Symptoms unresolved after a course of antibiotics',
+                        value: false),
+                  ],
+                ),
+              ),
+
               SizedBox(height: 30),
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
@@ -202,42 +246,56 @@ class _SymptomsState extends State<Symptoms> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Text(
                   'Male breast cancer symptoms',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40,color: Color(0xfff1a3a1)),
                 ),
               ),
               SizedBox(height: 30),
-              CustomText(
-                  text: 'Lumps in the breast, usually painless\n',
-                  value: false),
-              CustomText(text: 'Thickening of the breast\n', value: false),
-              CustomText(
-                  text:
-                      'Changes to the nipple or breast skin, such as dimpling, puckering or redness\n',
-                  value: false),
-              CustomText(
-                  text: 'Discharge of fluid from the nipples\n', value: false),
-              SizedBox(height: 10),
               Container(
-                //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: FlatButton(
-                  onPressed: () {
-                    chooseGenderDialog(context);
-                  },
-                  color: Color(0xff667aff),
-                  child: Container(
-                    child: Text(
-                      'Make a Prediction',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5,
-                      ),
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width-30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.pinkAccent),
+                  color: Color.fromRGBO(255, 192, 203, 0.1),
+                ),
+                child: Column(
+                  children: [
+                    CustomText(
+                        text: 'Lumps in the breast, usually painless\n',
+                        value: false),
+                    CustomText(text: 'Thickening of the breast\n', value: false),
+                    CustomText(
+                        text:
+                        'Changes to the nipple or breast skin, such as dimpling, puckering or redness\n',
+                        value: false),
+                    CustomText(
+                        text: 'Discharge of fluid from the nipples\n', value: false),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20),
+              FlatButton(
+                onPressed: () {
+                  chooseGenderDialog(context);
+                },
+                color: Color(0xfffeebe7),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Text(
+                    'Make a Prediction',
+                    style: TextStyle(
+                      color: Color(0xfff1a3a1),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
                     ),
                   ),
                 ),
-                height: 50,
-                width: 200,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  side:BorderSide(color: Color(0xfff1a3a1),width: 2.5),
+                ),
               ),
               SizedBox(height: 80),
             ],
@@ -351,6 +409,7 @@ chooseGenderDialog(BuildContext context) {
       "Cancel",
       style: TextStyle(
         fontSize: 20,
+        color: Color(0xfff1a3a1),
       ),
     ),
     onPressed: () {
@@ -363,6 +422,7 @@ chooseGenderDialog(BuildContext context) {
       "Male",
       style: TextStyle(
         fontSize: 20,
+        color: Color(0xfff1a3a1),
       ),
     ),
     onPressed: () {
@@ -375,6 +435,7 @@ chooseGenderDialog(BuildContext context) {
       "Female",
       style: TextStyle(
         fontSize: 20,
+        color: Color(0xfff1a3a1),
       ),
     ),
     onPressed: () {
@@ -388,6 +449,7 @@ chooseGenderDialog(BuildContext context) {
       "Others",
       style: TextStyle(
         fontSize: 20,
+        color: Color(0xfff1a3a1),
       ),
     ),
     onPressed: () {
@@ -421,6 +483,7 @@ calculatePrediction(BuildContext context, String text) {
       "OK",
       style: TextStyle(
         fontSize: 20,
+        color: Color(0xfff1a3a1),
       ),
     ),
     onPressed: () {
