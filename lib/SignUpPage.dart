@@ -22,7 +22,7 @@ class _SignUpState extends State<SignUp> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: new DecorationImage(
-                  image: new  AssetImage('assets/LoginBackground.jpg'),
+                  image: new  AssetImage('assets/SignupBackground.png'),
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
@@ -39,6 +39,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 child: TextField(
                     textAlignVertical: TextAlignVertical.bottom,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),

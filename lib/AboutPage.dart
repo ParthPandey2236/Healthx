@@ -1,5 +1,6 @@
 import 'package:elchackathon_app/main.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -199,25 +200,37 @@ class _AboutState extends State<About> {
                     color: Color(0xfff1a3a1),
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(35.0),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 15.0, right: 15, left: 15.0),
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              backgroundImage:
-                                  AssetImage('assets/Eeshan (3).jpg'),
+                Padding(
+                  padding: const EdgeInsets.all(35.0),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              color: Color(0xfffeebe7),
+                          ],
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15.0, right: 15, left: 15.0),
+                              child: CircleAvatar(
+                                radius: 50.0,
+                                backgroundImage: AssetImage('assets/Eeshan (3).jpg'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
                               child: Text(
                                 a == 0 ? 'Eeshan Dutta' : "इशान दत्त",
                                 style: TextStyle(
@@ -227,60 +240,85 @@ class _AboutState extends State<About> {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 15.0, right: 15, left: 15.0),
-                          child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: AssetImage('assets/Soham.jpg'),
-                          ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(0.0),
-                          child: Container(
-                            color: Color(0xfffeebe7),
-                            child: Text(
-                              a == 0 ? 'Soham Sakaria' : "सोहम साकारिया",
-                              style: TextStyle(
-                                fontFamily: 'Pacifico',
-                                fontSize: 20.0,
-                                color: Color(0xfff1a3a1),
+                      ),
+                      SizedBox(
+                        width: 27.0,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15.0, right: 15, left: 15.0),
+                              child: CircleAvatar(
+                                radius: 50.0,
+                                backgroundImage: AssetImage('assets/Soham.jpg'),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(35.0),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 15.0, right: 15, left: 15.0),
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              backgroundImage:
-                                  AssetImage('assets/parth pandey.jpg'),
+                            SizedBox(
+                              height: 10,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: Container(
-                              color: Color(0xfffeebe7),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Text(
+                                a == 0 ? 'Soham Sakaria' : "सोहम साकारिया",
+                                style: TextStyle(
+                                  fontFamily: 'Pacifico',
+                                  fontSize: 20.0,
+                                  color: Color(0xfff1a3a1),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(35.0),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15.0, right: 15, left: 15.0),
+                              child: CircleAvatar(
+                                radius: 50.0,
+                                backgroundImage: AssetImage('assets/parth pandey.jpg'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
                               child: Text(
                                 a == 0 ? 'Parth Pandey' : "पार्थ पांडेय",
                                 style: TextStyle(
@@ -290,41 +328,53 @@ class _AboutState extends State<About> {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 15.0, right: 15, left: 15.0),
-                          child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage:
-                                AssetImage('assets/Parth Srivastava.jpeg'),
-                          ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(0.0),
-                          child: Container(
-                            color: Color(0xfffeebe7),
-                            child: Text(
-                              a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
-                              style: TextStyle(
-                                fontFamily: 'Pacifico',
-                                fontSize: 20.0,
-                                color: Color(0xfff1a3a1),
+                      ),
+                      SizedBox(
+                        width: 27.0,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15.0, right: 15, left: 15.0),
+                              child: CircleAvatar(
+                                radius: 50.0,
+                                backgroundImage: AssetImage('assets/Parth Srivastava.jpeg'),
                               ),
                             ),
-                          ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Text(
+                                a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
+                                style: TextStyle(
+                                  fontFamily: 'Pacifico',
+                                  fontSize: 20.0,
+                                  color: Color(0xfff1a3a1),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
