@@ -1,6 +1,7 @@
 import 'package:elchackathon_app/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -161,6 +162,15 @@ class _SignUpState extends State<SignUp> {
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null) {
+                            Fluttertoast.showToast(
+                                msg: "Registration successful",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.black54,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
                             Navigator.pop(context);
                           }
                         } catch (e) {

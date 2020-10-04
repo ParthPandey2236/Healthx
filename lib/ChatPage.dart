@@ -1,9 +1,9 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elchackathon_app/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -32,11 +32,16 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffe8edf3),
+      backgroundColor: Color(0xfffeebe7),
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+          ),
+        ),
         title: Center(child: Text('Chat')),
         leading: null,
-        backgroundColor: Color(0xff667aff),
+        backgroundColor: Color(0xfff1a3a1),
       ),
       body: SafeArea(
         child: Column(
@@ -79,7 +84,7 @@ class _ChatState extends State<Chat> {
                     ),
                     IconButton(
                         icon:
-                            Icon(Icons.photo_camera, color: Color(0xff667aff)),
+                            Icon(Icons.photo_camera, color: Color(0xfff1a3a1)),
                         onPressed: () async {
                           // ignore: deprecated_member_use
                           File selected = await ImagePicker.pickImage(
@@ -95,7 +100,7 @@ class _ChatState extends State<Chat> {
                         }),
                     IconButton(
                         icon:
-                            Icon(Icons.photo_library, color: Color(0xff667aff)),
+                            Icon(Icons.photo_library, color: Color(0xfff1a3a1)),
                         onPressed: () async {
                           // ignore: deprecated_member_use
                           File selected = await ImagePicker.pickImage(
@@ -132,7 +137,7 @@ class MessagesStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Color(0xff667aff),
+              backgroundColor: Color(0xfff1a3a1),
             ),
           );
         }
@@ -217,7 +222,7 @@ class _MessageBubbleState extends State<MessageBubble> {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: widget.isMe ? Color(0xff667aff) : Colors.white,
+            color: widget.isMe ? Color(0xfff1a3a1) : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: widget.text.substring(
@@ -229,13 +234,22 @@ class _MessageBubbleState extends State<MessageBubble> {
                       widget.text.substring(
                               widget.text.length - 5, widget.text.length) ==
                           '.jpeg'
-                  ? Image.network(
-                      widget.text,
+                  ? widget.isMe ? ClipRRect(
+                    borderRadius: BorderRadius.only(topLeft:Radius.circular(30), bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
+                    child: Image.network(
+                        widget.text,
+                      ),
+                  )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.only(topRight:Radius.circular(30), bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
+                      child: Image.network(
+                        widget.text,
+                      ),
                     )
                   : Text(
                       widget.text,
                       style: TextStyle(
-                        color: widget.isMe ? Colors.white : Colors.black54,
+                        color: widget.isMe ? Colors.white : Color(0xfff1a3a1),
                         fontSize: 15.0,
                       ),
                     ),
@@ -317,10 +331,10 @@ class _ImageCaptureState extends State<ImageCapture> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfffeebe7),
       appBar: AppBar(
         title: Center(child: Text('Selected Image')),
-        backgroundColor: Color(0xff667aff),
+        backgroundColor: Color(0xfff1a3a1),
         leading: IconButton(icon: Icon(Icons.close), onPressed: _clear),
         actions: [IconButton(icon: Icon(Icons.crop), onPressed: _cropImage)],
       ),
@@ -394,20 +408,20 @@ class _UploaderState extends State<Uploader> {
                   if (_uploadTask.isComplete)
                     Text('Uploaded',
                         style: TextStyle(
-                            color: Color(0xff667aff), height: 2, fontSize: 30)),
+                            color: Color(0xfff1a3a1), height: 2, fontSize: 30)),
                   if (_uploadTask.isPaused)
                     Padding(
                       padding: EdgeInsets.only(bottom: 16.0),
                       child: FlatButton(
                         child: Icon(Icons.play_arrow,
-                            size: 50, color: Color(0xff667aff)),
+                            size: 50, color: Color(0xfff1a3a1)),
                         onPressed: _uploadTask.resume,
                       ),
                     ),
                   if (_uploadTask.isInProgress)
                     FlatButton(
                       child:
-                          Icon(Icons.pause, size: 50, color: Color(0xff667aff)),
+                          Icon(Icons.pause, size: 50, color: Color(0xfff1a3a1)),
                       onPressed: _uploadTask.pause,
                     ),
                   Column(
@@ -416,7 +430,7 @@ class _UploaderState extends State<Uploader> {
                       Text(
                         '${(progressPercent * 100).toStringAsFixed(2)} % ',
                         style:
-                            TextStyle(fontSize: 24, color: Color(0xff667aff)),
+                            TextStyle(fontSize: 24, color: Color(0xfff1a3a1)),
                       ),
                     ],
                   ),
@@ -427,8 +441,8 @@ class _UploaderState extends State<Uploader> {
                         value: progressPercent,
                         minHeight: 30.0,
                         valueColor:
-                            AlwaysStoppedAnimation<Color>(Color(0xff667aff)),
-                        backgroundColor: Color(0xffe8edf3)),
+                            AlwaysStoppedAnimation<Color>(Color(0xfff1a3a1)),
+                        backgroundColor: Color(0xfffce2e1)),
                   ),
                 ]);
           });
@@ -439,7 +453,7 @@ class _UploaderState extends State<Uploader> {
             child: Container(
               width: 300.0,
               decoration: BoxDecoration(
-                color: Color(0xff667aff),
+                color: Color(0xfff1a3a1),
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Padding(
@@ -459,7 +473,7 @@ class _UploaderState extends State<Uploader> {
                 builder: (BuildContext context) {
                   return Container(
                     height: 150,
-                    color: Color(0xff667aff),
+                    color: Color(0xfff1a3a1),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -476,7 +490,7 @@ class _UploaderState extends State<Uploader> {
                                   color: Color(0xffe8edf3),
                                   child: const Text('Upload',
                                       style: TextStyle(
-                                          color: Color(0xff667aff),
+                                          color: Color(0xfff1a3a1),
                                           fontWeight: FontWeight.bold)),
                                   onPressed: () {
                                     Navigator.pop(context);
@@ -488,7 +502,7 @@ class _UploaderState extends State<Uploader> {
                                 color: Color(0xffe8edf3),
                                 child: const Text('Cancel',
                                     style: TextStyle(
-                                        color: Color(0xff667aff),
+                                        color: Color(0xfff1a3a1),
                                         fontWeight: FontWeight.bold)),
                                 onPressed: () => Navigator.pop(context),
                               )
