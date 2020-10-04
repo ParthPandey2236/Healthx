@@ -78,7 +78,8 @@ class _AboutState extends State<About> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      margin: EdgeInsets.only(left: 50.0, top: 5),
+                      width: 60.0,
+                      margin: EdgeInsets.only(left: 75.0, top: 1),
                       child: FlatButton(
                         onPressed: () async {
                           //SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -93,13 +94,13 @@ class _AboutState extends State<About> {
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: Color(0xfff1a3a1))),
+                            side: BorderSide(color: Colors.black54)),
                       ),
                     ),
                   ),
                 ]),
                 Container(
-                    color: Colors.white,
+                    color: Color(0xfffeebe7),
                     child: a == 0
                         ? Text(
                             'About the App',
@@ -123,33 +124,54 @@ class _AboutState extends State<About> {
                   width: 150.0,
                   height: 20.0,
                   child: Divider(
-                    color: Color(0xfff1a3a1),
+                    color: Colors.black,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 60.0,right: 60.0,bottom: 20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0.0, 1.0), //(x,y)
+                          blurRadius: 6.0,
+                        ),
+                      ],
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: a == 0
+                          ? Text(
+                        'Healthx is an app built to act as a virtual bridge between the suffering and towards the goal of getting cured. It was built with the vision in mind to reduce the hassle of the suffering of connecting to the doctors and also understanding what to do and what not to do in such times. Hope this application helps in any small way possible to reduce the pain of our friends worldwide who are suffering. This application is focused on serving the people who has a high chance of having breast cancer/already suffering patients and it strives to make their lives a little bit better.',
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          height: 1.8,
+                        ),
+                        textAlign: TextAlign.center,
+                      )
+                          : Text(
+                        'हेल्थएक्स एक ऐप है जिसे पीड़ितों के बीच आभासी पुल के रूप में कार्य करने और ठीक होने के लक्ष्य के लिए बनाया गया है। यह डॉक्टरों से जुड़ने की पीड़ा की परेशानी को कम करने के लिए दृष्टि के साथ बनाया गया था और यह भी समझने के लिए कि ऐसे समय में क्या करना है और क्या नहीं। आशा है कि यह एप्लिकेशन दुनिया भर में पीड़ित हमारे दोस्तों के दर्द को कम करने के लिए किसी भी तरह से संभव है। यह एप्लिकेशन उन लोगों की सेवा करने पर केंद्रित है, जिनके स्तन कैंसर / पहले से ही पीड़ित मरीज होने का एक उच्च मौका है और यह उनके जीवन को थोड़ा बेहतर बनाने का प्रयास करता है।.',
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          height: 1.8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: a == 0
-                      ? Text(
-                          'Healthx is an app built to act as a virtual bridge between the suffering and towards the goal of getting cured. It was built with the vision in mind to reduce the hassle of the suffering of connecting to the doctors and also understanding what to do and what not to do in such times. Hope this application helps in any small way possible to reduce the pain of our friends worldwide who are suffering. This application is focused on serving the people who has a high chance of having breast cancer/already suffering patients and it strives to make their lives a little bit better.',
-                          style: TextStyle(
-                            fontFamily: 'SansitaSwashed',
-                            fontSize: 20.0,
-                            color: Colors.black,
-                          ),
-                        )
-                      : Text(
-                          'हेल्थएक्स एक ऐप है जिसे पीड़ितों के बीच आभासी पुल के रूप में कार्य करने और ठीक होने के लक्ष्य के लिए बनाया गया है। यह डॉक्टरों से जुड़ने की पीड़ा की परेशानी को कम करने के लिए दृष्टि के साथ बनाया गया था और यह भी समझने के लिए कि ऐसे समय में क्या करना है और क्या नहीं। आशा है कि यह एप्लिकेशन दुनिया भर में पीड़ित हमारे दोस्तों के दर्द को कम करने के लिए किसी भी तरह से संभव है। यह एप्लिकेशन उन लोगों की सेवा करने पर केंद्रित है, जिनके स्तन कैंसर / पहले से ही पीड़ित मरीज होने का एक उच्च मौका है और यह उनके जीवन को थोड़ा बेहतर बनाने का प्रयास करता है।.',
-                          style: TextStyle(
-                            fontFamily: 'SansitaSwashed',
-                            fontSize: 20.0,
-                            color: Colors.black,
-                          ),
-                        ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
                   child: Container(
-                      color: Colors.white,
+                      color: Color(0xfffeebe7),
                       child: a == 0
                           ? Text(
                               'Developers',
@@ -195,7 +217,7 @@ class _AboutState extends State<About> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              color: Colors.white,
+                              color: Color(0xfffeebe7),
                               child: Text(
                                 a == 0 ? 'Eeshan Dutta' : "इशान दत्त",
                                 style: TextStyle(
@@ -225,7 +247,7 @@ class _AboutState extends State<About> {
                         Padding(
                           padding: const EdgeInsets.all(0.0),
                           child: Container(
-                            color: Colors.white,
+                            color: Color(0xfffeebe7),
                             child: Text(
                               a == 0 ? 'Soham Sakaria' : "सोहम साकारिया",
                               style: TextStyle(
@@ -258,7 +280,7 @@ class _AboutState extends State<About> {
                           Padding(
                             padding: const EdgeInsets.all(0.0),
                             child: Container(
-                              color: Colors.white,
+                              color: Color(0xfffeebe7),
                               child: Text(
                                 a == 0 ? 'Parth Pandey' : "पार्थ पांडेय",
                                 style: TextStyle(
@@ -289,7 +311,7 @@ class _AboutState extends State<About> {
                         Padding(
                           padding: const EdgeInsets.all(0.0),
                           child: Container(
-                            color: Colors.white,
+                            color: Color(0xfffeebe7),
                             child: Text(
                               a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
                               style: TextStyle(
