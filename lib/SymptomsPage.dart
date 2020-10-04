@@ -73,7 +73,7 @@ class _SymptomsState extends State<Symptoms> {
                 width: MediaQuery.of(context).size.width-30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: Colors.pinkAccent),
+                  border: Border.all(color: Colors.pink[100]),
                   color: Color.fromRGBO(255, 192, 203, 0.1),
                 ),
                 child: Column(
@@ -112,7 +112,7 @@ class _SymptomsState extends State<Symptoms> {
                 width: MediaQuery.of(context).size.width-30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: Colors.pinkAccent),
+                  border: Border.all(color: Colors.pink[100]),
                   color: Color.fromRGBO(255, 192, 203, 0.1),
                 ),
                 child: Column(
@@ -196,7 +196,7 @@ class _SymptomsState extends State<Symptoms> {
                 width: MediaQuery.of(context).size.width-30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: Colors.pinkAccent),
+                  border: Border.all(color: Colors.pink[100]),
                   color: Color.fromRGBO(255, 192, 203, 0.1),
                 ),
                 child: Column(
@@ -255,7 +255,7 @@ class _SymptomsState extends State<Symptoms> {
                 width: MediaQuery.of(context).size.width-30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: Colors.pinkAccent),
+                  border: Border.all(color: Colors.pink[100]),
                   color: Color.fromRGBO(255, 192, 203, 0.1),
                 ),
                 child: Column(
