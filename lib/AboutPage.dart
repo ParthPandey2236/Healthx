@@ -18,7 +18,7 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   bool status = true;
   String language = "हिंदी";
-  int a = 1;
+  int a = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,9 +37,15 @@ class _AboutState extends State<About> {
                         cornerRadius: 20,
                         activeBgColor: Colors.pink,
                         inactiveBgColor: Colors.white,
-                        labels: ["हिंदी", "English"],
+                        labels: [
+                          "English",
+                          "हिंदी",
+                        ],
                         onToggle: (index) {
-                          print('switched to: $index');
+                          if (a != index) {
+                            a = index;
+                            setState(() {});
+                          }
                         }),
                   ),
                   Padding(
@@ -66,17 +72,26 @@ class _AboutState extends State<About> {
                   ),
                 ]),
                 Container(
-                  color: Colors.white,
-                  child: Text(
-                    'About the App',
-                    style: TextStyle(
-                      fontFamily: 'SansitaSwashed',
-                      fontSize: 50.0,
-                      color: Colors.pinkAccent[100],
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                    color: Colors.white,
+                    child: a == 0
+                        ? Text(
+                            'About the App',
+                            style: TextStyle(
+                              fontFamily: 'SansitaSwashed',
+                              fontSize: 50.0,
+                              color: Colors.pinkAccent[100],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : Text(
+                            'ऐप के बारे में',
+                            style: TextStyle(
+                              fontFamily: 'SansitaSwashed',
+                              fontSize: 50.0,
+                              color: Colors.pinkAccent[100],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                 SizedBox(
                   width: 150.0,
                   height: 20.0,
@@ -86,30 +101,49 @@ class _AboutState extends State<About> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: Text(
-                    'Healthx is an app built to act as a virtual bridge between the suffering and towards the goal of getting cured. It was built with the vision in mind to reduce the hassle of the suffering of connecting to the doctors and also understanding what to do and what not to do in such times. Hope this application helps in any small way possible to reduce the pain of our friends worldwide who are suffering. This application is focused on serving the people who has a high chance of having breast cancer/already suffering patients and it strives to make their lives a little bit better.',
-                    style: TextStyle(
-                      fontFamily: 'SansitaSwashed',
-                      fontSize: 20.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: a == 0
+                      ? Text(
+                          'Healthx is an app built to act as a virtual bridge between the suffering and towards the goal of getting cured. It was built with the vision in mind to reduce the hassle of the suffering of connecting to the doctors and also understanding what to do and what not to do in such times. Hope this application helps in any small way possible to reduce the pain of our friends worldwide who are suffering. This application is focused on serving the people who has a high chance of having breast cancer/already suffering patients and it strives to make their lives a little bit better.',
+                          style: TextStyle(
+                            fontFamily: 'SansitaSwashed',
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : Text(
+                          'हेल्थएक्स एक ऐप है जिसे पीड़ितों के बीच आभासी पुल के रूप में कार्य करने और ठीक होने के लक्ष्य के लिए बनाया गया है। यह डॉक्टरों से जुड़ने की पीड़ा की परेशानी को कम करने के लिए दृष्टि के साथ बनाया गया था और यह भी समझने के लिए कि ऐसे समय में क्या करना है और क्या नहीं। आशा है कि यह एप्लिकेशन दुनिया भर में पीड़ित हमारे दोस्तों के दर्द को कम करने के लिए किसी भी तरह से संभव है। यह एप्लिकेशन उन लोगों की सेवा करने पर केंद्रित है, जिनके स्तन कैंसर / पहले से ही पीड़ित मरीज होने का एक उच्च मौका है और यह उनके जीवन को थोड़ा बेहतर बनाने का प्रयास करता है।.',
+                          style: TextStyle(
+                            fontFamily: 'SansitaSwashed',
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    color: Colors.white,
-                    child: Text(
-                      'Developers',
-                      style: TextStyle(
-                        fontFamily: 'SansitaSwashed',
-                        fontSize: 50.0,
-                        color: Colors.pinkAccent[100],
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                      color: Colors.white,
+                      child: a == 0
+                          ? Text(
+                              'Developers',
+                              style: TextStyle(
+                                fontFamily: 'SansitaSwashed',
+                                fontSize: 50.0,
+                                color: Colors.pinkAccent[100],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          : Text(
+                              'डेवलपर्स',
+                              style: TextStyle(
+                                fontFamily: 'SansitaSwashed',
+                                fontSize: 50.0,
+                                color: Colors.pinkAccent[100],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
                 ),
                 SizedBox(
                   width: 150.0,
