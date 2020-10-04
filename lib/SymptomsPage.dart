@@ -612,8 +612,17 @@ calculatePrediction(BuildContext context, String text) {
                 color: Color(0xfff1a3a1),
               ),
             ),
+            Center(
+              child: Text(
+                  a == 0
+                      ? "IF PREDICTION PERCENTAGE IS ABOVE 50% IT IS ADVISABLE TO IMMEDIATELY VISIT A DOCTOR."
+                      : "अगर मान्यता प्राप्त है, तो 50% आईटी एक डॉक्टर के पास जाने के लिए उपलब्ध है।",
+                  style: TextStyle(
+                    color: Colors.redAccent[200],
+                  )),
+            ),
             Text(a == 0
-                ? "This is in no way a perfect prediction. This is just a rough estimate based on the symptoms you selected"
+                ? "\n\nThis is in no way a perfect prediction. This is just a rough estimate based on the symptoms you selected."
                 : "यह किसी भी तरह से एक आदर्श भविष्यवाणी नहीं है। यह आपके द्वारा चुने गए लक्षणों के आधार पर सिर्फ एक मोटा अनुमान है।"),
           ],
         ),
