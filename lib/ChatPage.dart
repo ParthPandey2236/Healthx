@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elchackathon_app/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -196,7 +197,7 @@ class _MessageBubbleState extends State<MessageBubble> {
 
   @override
   Widget build(BuildContext context) {
-    if (true) trans();
+    a == 1 ? trans() : null;
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Column(
@@ -234,18 +235,25 @@ class _MessageBubbleState extends State<MessageBubble> {
                       widget.text.substring(
                               widget.text.length - 5, widget.text.length) ==
                           '.jpeg'
-                  ? widget.isMe ? ClipRRect(
-                    borderRadius: BorderRadius.only(topLeft:Radius.circular(30), bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
-                    child: Image.network(
-                        widget.text,
-                      ),
-                  )
-                  : ClipRRect(
-                      borderRadius: BorderRadius.only(topRight:Radius.circular(30), bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
-                      child: Image.network(
-                        widget.text,
-                      ),
-                    )
+                  ? widget.isMe
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30)),
+                          child: Image.network(
+                            widget.text,
+                          ),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30)),
+                          child: Image.network(
+                            widget.text,
+                          ),
+                        )
                   : Text(
                       widget.text,
                       style: TextStyle(
