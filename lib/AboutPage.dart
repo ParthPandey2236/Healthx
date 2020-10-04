@@ -9,7 +9,7 @@ void main() {
     home: About(),
   ));
 }
-
+int a = 0;
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -18,7 +18,7 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   bool status = true;
   String language = "हिंदी";
-  int a = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,14 +44,15 @@ class _AboutState extends State<About> {
                         onToggle: (index) {
                           if (a != index) {
                             a = index;
+                            print(index);
                             setState(() {});
                           }
                         }),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(0.0),
                     child: Container(
-                      margin: EdgeInsets.only(left: 50.0, top: 5, right: 1),
+                      margin: EdgeInsets.only(left: 50.0, top: 5),
                       child: FlatButton(
                         onPressed: () async {
                           //SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -168,9 +169,10 @@ class _AboutState extends State<About> {
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                'Eeshan Dutta',
+                                a==0?
+                                'Eeshan Dutta':"इशान दत्त",
                                 style: TextStyle(
-                                  fontFamily: 'SansitaSwashed',
+                                  fontFamily: 'Pacifico',
                                   fontSize: 20.0,
                                   color: Colors.pinkAccent[100],
                                 ),
@@ -190,11 +192,12 @@ class _AboutState extends State<About> {
                           backgroundImage: AssetImage('assets/Soham.jpg'),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              'Soham Sakaria',
+                              a==0?
+                              'Soham Sakaria':"सोहम साकारिया",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
@@ -219,11 +222,12 @@ class _AboutState extends State<About> {
                                 AssetImage('assets/parth pandey.jpg'),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(0.0),
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                'Parth Pandey',
+                                a==0?
+                                'Parth Pandey':"पार्थ पांडेय",
                                 style: TextStyle(
                                   fontFamily: 'Pacifico',
                                   fontSize: 20.0,
@@ -246,11 +250,12 @@ class _AboutState extends State<About> {
                               AssetImage('assets/Parth Srivastava.jpeg'),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              'Parth Srivastava',
+                              a==0?
+                              'Parth Srivastava':"पार्थ श्रीवास्तव",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
