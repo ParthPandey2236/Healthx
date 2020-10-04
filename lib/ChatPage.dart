@@ -1,21 +1,25 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elchackathon_app/constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image_cropper/image_cropper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
 String email;
 File _imageFile;
-Future<void> currentUserEmail() async{
+Future<void> currentUserEmail() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  email=prefs.getString('email');
+  email = prefs.getString('email');
 }
+
 // ignore: deprecated_member_use
 final _firestore = Firestore.instance;
+
 class Chat extends StatefulWidget {
   @override
   _ChatState createState() => _ChatState();
@@ -24,7 +28,7 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  String messageText='';
+  String messageText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +62,14 @@ class _ChatState extends State<Chat> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        if(messageText!=''){
+                        if (messageText != '') {
                           messageTextController.clear();
                           _firestore.collection('messages').add({
                             'text': messageText,
                             'sender': email,
                             'time': DateTime.now(),
                           });
-                          messageText='';
+                          messageText = '';
                         }
                       },
                       child: Text(
@@ -74,27 +78,37 @@ class _ChatState extends State<Chat> {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.photo_camera, color: Color(0xff667aff)),
-                      onPressed: () async{
-                        // ignore: deprecated_member_use
-                        File selected = await ImagePicker.pickImage(source: ImageSource.camera);
-                        setState(() {
-                          _imageFile = selected;
-                        });
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
-                      }
-                    ),
+                        icon:
+                            Icon(Icons.photo_camera, color: Color(0xff667aff)),
+                        onPressed: () async {
+                          // ignore: deprecated_member_use
+                          File selected = await ImagePicker.pickImage(
+                              source: ImageSource.camera);
+                          setState(() {
+                            _imageFile = selected;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ImageCapture(file: _imageFile)));
+                        }),
                     IconButton(
-                      icon: Icon(Icons.photo_library, color: Color(0xff667aff)),
-                      onPressed: () async{
-                        // ignore: deprecated_member_use
-                        File selected = await ImagePicker.pickImage(source: ImageSource.gallery);
-                        setState(() {
-                          _imageFile = selected;
-                        });
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
-                      }
-                    ),
+                        icon:
+                            Icon(Icons.photo_library, color: Color(0xff667aff)),
+                        onPressed: () async {
+                          // ignore: deprecated_member_use
+                          File selected = await ImagePicker.pickImage(
+                              source: ImageSource.gallery);
+                          setState(() {
+                            _imageFile = selected;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ImageCapture(file: _imageFile)));
+                        }),
                   ],
                 ),
               ),
@@ -110,7 +124,10 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').orderBy('time',descending: false).snapshots(),
+      stream: _firestore
+          .collection('messages')
+          .orderBy('time', descending: false)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -148,53 +165,80 @@ class MessagesStream extends StatelessWidget {
   }
 }
 
-class MessageBubble extends StatelessWidget {
+class MessageBubble extends StatefulWidget {
   MessageBubble({this.sender, this.text, this.isMe});
 
   final String sender;
-  final String text;
+  String text;
   final bool isMe;
 
   @override
+  _MessageBubbleState createState() => _MessageBubbleState();
+}
+
+class _MessageBubbleState extends State<MessageBubble> {
+  String out;
+  int a = 1;
+  GoogleTranslator translator = new GoogleTranslator();
+
+  void trans() {
+    translator.translate(widget.text, to: 'hi').then((output) {
+      setState(() {
+        widget.text = output.toString();
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (true) trans();
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment:
-        isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            widget.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            sender,
+            widget.sender,
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.black54,
             ),
           ),
           Material(
-            borderRadius: isMe
+            borderRadius: widget.isMe
                 ? BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0))
+                    topLeft: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0))
                 : BorderRadius.only(
-              bottomLeft: Radius.circular(30.0),
-              bottomRight: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
-            ),
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  ),
             elevation: 5.0,
-            color: isMe ? Color(0xff667aff) : Colors.white,
+            color: widget.isMe ? Color(0xff667aff) : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: text.substring(text.length-4,text.length)=='.jpg'||text.substring(text.length-4,text.length)=='.png'||text.substring(text.length-5,text.length)=='.jpeg' ?Image.network(
-                text,
-              )
-                  :Text(
-                text,
-                style: TextStyle(
-                  color: isMe ? Colors.white : Colors.black54,
-                  fontSize: 15.0,
-                ),
-              ),
+              child: widget.text.substring(
+                              widget.text.length - 4, widget.text.length) ==
+                          '.jpg' ||
+                      widget.text.substring(
+                              widget.text.length - 4, widget.text.length) ==
+                          '.png' ||
+                      widget.text.substring(
+                              widget.text.length - 5, widget.text.length) ==
+                          '.jpeg'
+                  ? Image.network(
+                      widget.text,
+                    )
+                  : Text(
+                      widget.text,
+                      style: TextStyle(
+                        color: widget.isMe ? Colors.white : Colors.black54,
+                        fontSize: 15.0,
+                      ),
+                    ),
             ),
           ),
         ],
@@ -231,22 +275,22 @@ class _ImageCaptureState extends State<ImageCapture> {
         sourcePath: _imageFile.path,
         aspectRatioPresets: Platform.isAndroid
             ? [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9
-        ]
+                CropAspectRatioPreset.square,
+                CropAspectRatioPreset.ratio3x2,
+                CropAspectRatioPreset.original,
+                CropAspectRatioPreset.ratio4x3,
+                CropAspectRatioPreset.ratio16x9
+              ]
             : [
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio5x3,
-          CropAspectRatioPreset.ratio5x4,
-          CropAspectRatioPreset.ratio7x5,
-          CropAspectRatioPreset.ratio16x9
-        ],
+                CropAspectRatioPreset.original,
+                CropAspectRatioPreset.square,
+                CropAspectRatioPreset.ratio3x2,
+                CropAspectRatioPreset.ratio4x3,
+                CropAspectRatioPreset.ratio5x3,
+                CropAspectRatioPreset.ratio5x4,
+                CropAspectRatioPreset.ratio7x5,
+                CropAspectRatioPreset.ratio16x9
+              ],
         androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Cropper',
             toolbarColor: Colors.deepOrange,
@@ -275,21 +319,18 @@ class _ImageCaptureState extends State<ImageCapture> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title:Center(child: Text('Selected Image')),
+        title: Center(child: Text('Selected Image')),
         backgroundColor: Color(0xff667aff),
         leading: IconButton(icon: Icon(Icons.close), onPressed: _clear),
-        actions: [
-          IconButton(icon: Icon(Icons.crop), onPressed: _cropImage)
-        ],
+        actions: [IconButton(icon: Icon(Icons.crop), onPressed: _cropImage)],
       ),
       body: ListView(
         children: <Widget>[
           if (_imageFile != null) ...[
             Container(
-                padding: EdgeInsets.all(32), child: Image.file(_imageFile)
-            ),
+                padding: EdgeInsets.all(32), child: Image.file(_imageFile)),
             Center(
-              child : Uploader(
+              child: Uploader(
                 file: _imageFile,
               ),
             )
@@ -311,7 +352,7 @@ class Uploader extends StatefulWidget {
 
 class _UploaderState extends State<Uploader> {
   final FirebaseStorage _storage =
-  FirebaseStorage(storageBucket: 'gs://ctrl-alt-elite-bd79d.appspot.com');
+      FirebaseStorage(storageBucket: 'gs://ctrl-alt-elite-bd79d.appspot.com');
 
   StorageUploadTask _uploadTask;
 
@@ -319,7 +360,8 @@ class _UploaderState extends State<Uploader> {
     String filePath = 'images/${DateTime.now()}.jpeg';
     setState(() {
       _uploadTask = _storage.ref().child(filePath).putFile(widget.file);
-      final StorageReference ref = FirebaseStorage.instance.ref().child(filePath);
+      final StorageReference ref =
+          FirebaseStorage.instance.ref().child(filePath);
     });
   }
 
@@ -352,59 +394,66 @@ class _UploaderState extends State<Uploader> {
                   if (_uploadTask.isComplete)
                     Text('Uploaded',
                         style: TextStyle(
-                            color: Color(0xff667aff),
-                            height: 2,
-                            fontSize: 30)),
+                            color: Color(0xff667aff), height: 2, fontSize: 30)),
                   if (_uploadTask.isPaused)
                     Padding(
                       padding: EdgeInsets.only(bottom: 16.0),
                       child: FlatButton(
-                        child: Icon(Icons.play_arrow, size: 50, color: Color(0xff667aff)),
+                        child: Icon(Icons.play_arrow,
+                            size: 50, color: Color(0xff667aff)),
                         onPressed: _uploadTask.resume,
                       ),
                     ),
                   if (_uploadTask.isInProgress)
                     FlatButton(
-                      child: Icon(Icons.pause, size: 50, color: Color(0xff667aff)),
+                      child:
+                          Icon(Icons.pause, size: 50, color: Color(0xff667aff)),
                       onPressed: _uploadTask.pause,
                     ),
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         '${(progressPercent * 100).toStringAsFixed(2)} % ',
-                        style: TextStyle(fontSize: 24, color: Color(0xff667aff)),
+                        style:
+                            TextStyle(fontSize: 24, color: Color(0xff667aff)),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 40.0,right: 40.0,bottom: 80.0),
-                    child: LinearProgressIndicator(value: progressPercent, minHeight: 30.0,valueColor: AlwaysStoppedAnimation<Color>(Color(0xff667aff)), backgroundColor: Color(0xffe8edf3)),
+                    padding:
+                        EdgeInsets.only(left: 40.0, right: 40.0, bottom: 80.0),
+                    child: LinearProgressIndicator(
+                        value: progressPercent,
+                        minHeight: 30.0,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xff667aff)),
+                        backgroundColor: Color(0xffe8edf3)),
                   ),
                 ]);
           });
     } else {
       return Padding(
-        padding: EdgeInsets.only(left: 50.0,right: 50.0,bottom: 40.0),
+        padding: EdgeInsets.only(left: 50.0, right: 50.0, bottom: 40.0),
         child: FlatButton(
             child: Container(
               width: 300.0,
               decoration: BoxDecoration(
                 color: Color(0xff667aff),
-                  borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(20.0),
               ),
               child: Padding(
-                padding: EdgeInsets.only(top: 20.0,bottom: 20.0),
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Column(
                   children: [
                     Icon(Icons.cloud_upload, color: Color(0xffe8edf3)),
-                    Text('Upload to Firebase', style: TextStyle(color: Color(0xffe8edf3))),
+                    Text('Upload to Firebase',
+                        style: TextStyle(color: Color(0xffe8edf3))),
                   ],
                 ),
               ),
             ),
-            onPressed:(){
+            onPressed: () {
               showModalBottomSheet<void>(
                 context: context,
                 builder: (BuildContext context) {
@@ -415,24 +464,32 @@ class _UploaderState extends State<Uploader> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          const Text('Are You Sure Want To Proceed ?',style: TextStyle(color: Color(0xffe8edf3),fontWeight: FontWeight.bold)),
-                          SizedBox(height:20.0),
+                          const Text('Are You Sure Want To Proceed ?',
+                              style: TextStyle(
+                                  color: Color(0xffe8edf3),
+                                  fontWeight: FontWeight.bold)),
+                          SizedBox(height: 20.0),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FlatButton(
-                                color: Color(0xffe8edf3),
-                                child: const Text('Upload', style: TextStyle(color: Color(0xff667aff),fontWeight: FontWeight.bold)),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  _startUpload();
-                                  addurlinfirebase();
-                                }
-                              ),
-                              SizedBox(width:50.0),
+                                  color: Color(0xffe8edf3),
+                                  child: const Text('Upload',
+                                      style: TextStyle(
+                                          color: Color(0xff667aff),
+                                          fontWeight: FontWeight.bold)),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    _startUpload();
+                                    addurlinfirebase();
+                                  }),
+                              SizedBox(width: 50.0),
                               FlatButton(
                                 color: Color(0xffe8edf3),
-                                child: const Text('Cancel', style: TextStyle(color: Color(0xff667aff),fontWeight: FontWeight.bold)),
+                                child: const Text('Cancel',
+                                    style: TextStyle(
+                                        color: Color(0xff667aff),
+                                        fontWeight: FontWeight.bold)),
                                 onPressed: () => Navigator.pop(context),
                               )
                             ],
@@ -443,8 +500,7 @@ class _UploaderState extends State<Uploader> {
                   );
                 },
               );
-            }
-        ),
+            }),
       );
     }
   }
