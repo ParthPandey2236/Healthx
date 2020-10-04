@@ -9,7 +9,7 @@ void main() {
     home: About(),
   ));
 }
-
+int a = 0;
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -18,7 +18,7 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   bool status = true;
   String language = "हिंदी";
-  int a = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +44,7 @@ class _AboutState extends State<About> {
                         onToggle: (index) {
                           if (a != index) {
                             a = index;
+                            print(index);
                             setState(() {});
                           }
                         }),
@@ -168,9 +169,10 @@ class _AboutState extends State<About> {
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                'Eeshan Dutta',
+                                a==0?
+                                'Eeshan Dutta':"इशान दत्त",
                                 style: TextStyle(
-                                  fontFamily: 'SansitaSwashed',
+                                  fontFamily: 'Pacifico',
                                   fontSize: 20.0,
                                   color: Colors.pinkAccent[100],
                                 ),
@@ -194,7 +196,8 @@ class _AboutState extends State<About> {
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              'Soham Sakaria',
+                              a==0?
+                              'Soham Sakaria':"सोहम साकारिया",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
@@ -223,7 +226,8 @@ class _AboutState extends State<About> {
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                'Parth Pandey',
+                                a==0?
+                                'Parth Pandey':"पार्थ पांडेय",
                                 style: TextStyle(
                                   fontFamily: 'Pacifico',
                                   fontSize: 20.0,
@@ -250,7 +254,8 @@ class _AboutState extends State<About> {
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              'Parth Srivastava',
+                              a==0?
+                              'Parth Srivastava':"पार्थ श्रीवास्तव",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
