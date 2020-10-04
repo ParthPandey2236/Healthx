@@ -2,14 +2,16 @@ import 'package:elchackathon_app/main.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 void main() {
   runApp(MaterialApp(
     home: About(),
   ));
 }
+
 int a = 0;
+int selectedIndex = 0;
+
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -22,7 +24,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent[100],
+      backgroundColor: Color(0xfffeebe7),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -32,25 +34,49 @@ class _AboutState extends State<About> {
                 Row(children: [
                   Padding(
                     padding: const EdgeInsets.all(11.0),
-                    child: ToggleSwitch(
-                        minWidth: 90.0,
-                        cornerRadius: 20,
-                        activeBgColor: Colors.pink,
-                        inactiveBgColor: Colors.white,
-                        labels: [
-                          "English",
-                          "हिंदी",
-                        ],
-                        onToggle: (index) {
-                          if (a != index) {
-                            a = index;
-                            print(index);
-                            setState(() {});
-                          }
-                        }),
+                    child: Row(
+                      children: [
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(18),
+                                  bottomLeft: Radius.circular(18))),
+                          elevation: 5,
+                          color: a == 0 ? Color(0xfff1a3a1) : Color(0xfffeebe7),
+                          child: Center(
+                              child: Text('English',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15))),
+                          onPressed: () {
+                            setState(() {
+                              a = 0;
+                            });
+                          },
+                        ),
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(18),
+                                  bottomRight: Radius.circular(18))),
+                          elevation: 5,
+                          color: a == 1 ? Color(0xfff1a3a1) : Color(0xfffeebe7),
+                          child: Center(
+                              child: Text('हिंदी',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 16))),
+                          onPressed: () {
+                            setState(() {
+                              a = 1;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(0.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Container(
                       margin: EdgeInsets.only(left: 50.0, top: 5),
                       child: FlatButton(
@@ -67,7 +93,7 @@ class _AboutState extends State<About> {
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: Colors.white)),
+                            side: BorderSide(color: Color(0xfff1a3a1))),
                       ),
                     ),
                   ),
@@ -80,7 +106,7 @@ class _AboutState extends State<About> {
                             style: TextStyle(
                               fontFamily: 'SansitaSwashed',
                               fontSize: 50.0,
-                              color: Colors.pinkAccent[100],
+                              color: Color(0xfff1a3a1),
                               fontWeight: FontWeight.bold,
                             ),
                           )
@@ -89,7 +115,7 @@ class _AboutState extends State<About> {
                             style: TextStyle(
                               fontFamily: 'SansitaSwashed',
                               fontSize: 50.0,
-                              color: Colors.pinkAccent[100],
+                              color: Color(0xfff1a3a1),
                               fontWeight: FontWeight.bold,
                             ),
                           )),
@@ -97,7 +123,7 @@ class _AboutState extends State<About> {
                   width: 150.0,
                   height: 20.0,
                   child: Divider(
-                    color: Colors.white,
+                    color: Color(0xfff1a3a1),
                   ),
                 ),
                 Padding(
@@ -108,8 +134,7 @@ class _AboutState extends State<About> {
                           style: TextStyle(
                             fontFamily: 'SansitaSwashed',
                             fontSize: 20.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         )
                       : Text(
@@ -117,8 +142,7 @@ class _AboutState extends State<About> {
                           style: TextStyle(
                             fontFamily: 'SansitaSwashed',
                             fontSize: 20.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                 ),
@@ -132,7 +156,7 @@ class _AboutState extends State<About> {
                               style: TextStyle(
                                 fontFamily: 'SansitaSwashed',
                                 fontSize: 50.0,
-                                color: Colors.pinkAccent[100],
+                                color: Color(0xfff1a3a1),
                                 fontWeight: FontWeight.bold,
                               ),
                             )
@@ -141,7 +165,7 @@ class _AboutState extends State<About> {
                               style: TextStyle(
                                 fontFamily: 'SansitaSwashed',
                                 fontSize: 50.0,
-                                color: Colors.pinkAccent[100],
+                                color: Color(0xfff1a3a1),
                                 fontWeight: FontWeight.bold,
                               ),
                             )),
@@ -150,7 +174,7 @@ class _AboutState extends State<About> {
                   width: 150.0,
                   height: 20.0,
                   child: Divider(
-                    color: Colors.white,
+                    color: Color(0xfff1a3a1),
                   ),
                 ),
                 Row(
@@ -159,22 +183,25 @@ class _AboutState extends State<About> {
                       padding: const EdgeInsets.all(35.0),
                       child: Column(
                         children: <Widget>[
-                          CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage:
-                                AssetImage('assets/Eeshan (3).jpg'),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 15.0, right: 15, left: 15.0),
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              backgroundImage:
+                                  AssetImage('assets/Eeshan (3).jpg'),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                a==0?
-                                'Eeshan Dutta':"इशान दत्त",
+                                a == 0 ? 'Eeshan Dutta' : "इशान दत्त",
                                 style: TextStyle(
                                   fontFamily: 'Pacifico',
                                   fontSize: 20.0,
-                                  color: Colors.pinkAccent[100],
+                                  color: Color(0xfff1a3a1),
                                 ),
                               ),
                             ),
@@ -187,21 +214,24 @@ class _AboutState extends State<About> {
                     ),
                     Column(
                       children: <Widget>[
-                        CircleAvatar(
-                          radius: 50.0,
-                          backgroundImage: AssetImage('assets/Soham.jpg'),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 15.0, right: 15, left: 15.0),
+                          child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: AssetImage('assets/Soham.jpg'),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              a==0?
-                              'Soham Sakaria':"सोहम साकारिया",
+                              a == 0 ? 'Soham Sakaria' : "सोहम साकारिया",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
-                                color: Colors.pinkAccent[100],
+                                color: Color(0xfff1a3a1),
                               ),
                             ),
                           ),
@@ -216,22 +246,25 @@ class _AboutState extends State<About> {
                       padding: const EdgeInsets.all(35.0),
                       child: Column(
                         children: <Widget>[
-                          CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage:
-                                AssetImage('assets/parth pandey.jpg'),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 15.0, right: 15, left: 15.0),
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              backgroundImage:
+                                  AssetImage('assets/parth pandey.jpg'),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(0.0),
                             child: Container(
                               color: Colors.white,
                               child: Text(
-                                a==0?
-                                'Parth Pandey':"पार्थ पांडेय",
+                                a == 0 ? 'Parth Pandey' : "पार्थ पांडेय",
                                 style: TextStyle(
                                   fontFamily: 'Pacifico',
                                   fontSize: 20.0,
-                                  color: Colors.pinkAccent[100],
+                                  color: Color(0xfff1a3a1),
                                 ),
                               ),
                             ),
@@ -244,22 +277,25 @@ class _AboutState extends State<About> {
                     ),
                     Column(
                       children: <Widget>[
-                        CircleAvatar(
-                          radius: 50.0,
-                          backgroundImage:
-                              AssetImage('assets/Parth Srivastava.jpeg'),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 15.0, right: 15, left: 15.0),
+                          child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage:
+                                AssetImage('assets/Parth Srivastava.jpeg'),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(0.0),
                           child: Container(
                             color: Colors.white,
                             child: Text(
-                              a==0?
-                              'Parth Srivastava':"पार्थ श्रीवास्तव",
+                              a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
                               style: TextStyle(
                                 fontFamily: 'Pacifico',
                                 fontSize: 20.0,
-                                color: Colors.pinkAccent[100],
+                                color: Color(0xfff1a3a1),
                               ),
                             ),
                           ),
