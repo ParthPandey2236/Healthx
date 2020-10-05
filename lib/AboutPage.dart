@@ -201,8 +201,10 @@ class _AboutState extends State<About> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(35.0),
+                  padding: const EdgeInsets.all(25.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         decoration: BoxDecoration(
@@ -242,9 +244,6 @@ class _AboutState extends State<About> {
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 27.0,
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -289,8 +288,9 @@ class _AboutState extends State<About> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(27.0),
+                  padding: const EdgeInsets.all(25.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
                         decoration: BoxDecoration(
@@ -331,14 +331,8 @@ class _AboutState extends State<About> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: 27.0,
-                      ),
                       Container(
-
-
                         decoration: BoxDecoration(
-
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                           boxShadow: [
@@ -353,7 +347,7 @@ class _AboutState extends State<About> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
-                                  top: 15.0, right: 20, left: 15.0),
+                                  top: 15.0, right: 15, left: 15.0),
                               child: CircleAvatar(
                                 radius: 50.0,
                                 backgroundImage: AssetImage('assets/Parth Srivastava.jpeg'),
@@ -362,13 +356,15 @@ class _AboutState extends State<About> {
                             SizedBox(
                               height: 10,
                             ),
-                            Text(
-
-                              a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
-                              style: TextStyle(
-                                fontFamily: 'Pacifico',
-                                fontSize: 20.0,
-                                color: Color(0xfff1a3a1),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Text(
+                                a == 0 ? 'Parth Srivastava' : "पार्थ श्रीवास्तव",
+                                style: TextStyle(
+                                  fontFamily: 'Pacifico',
+                                  fontSize: 20.0,
+                                  color: Color(0xfff1a3a1),
+                                ),
                               ),
                             ),
                           ],
