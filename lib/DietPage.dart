@@ -16,8 +16,9 @@ class _DietState extends State<Diet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff1a3a1),
       body:SafeArea(
-        child:SingleChildScrollView(
+          child:SingleChildScrollView(
           padding: EdgeInsets.only(bottom: 60.0),
           child: Column(
             children: [
@@ -27,12 +28,22 @@ class _DietState extends State<Diet> {
                   a==0?
                   "Do's":'करने योग्य',
                   style: TextStyle(
-                    fontSize: 40.0,
-                    color: Colors.green[400],
+                    fontSize: 42.0,
+                    fontFamily: 'SansitaSwashed',
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ),
               Card(
+
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
                child: ListTile(
 
                  title: Text(
@@ -48,12 +59,20 @@ class _DietState extends State<Diet> {
                  leading: CircleAvatar(
                    radius: 25.0,
                  backgroundImage: AssetImage('assets/veg green.jpg'),
+
                  ),
                ) ,
                 shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -74,6 +93,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -93,6 +119,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -112,6 +145,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -134,12 +174,20 @@ class _DietState extends State<Diet> {
                 a==0?
                 "Don'ts":"क्या न करें",
                 style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.red[600],
+                  fontSize: 42.0,
+                  fontFamily: 'SansitaSwashed',
+                  color: Colors.white,
 
                 ),
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -159,6 +207,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -178,6 +233,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -197,6 +259,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -216,6 +285,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   title: Text(
                     a==0?
@@ -238,11 +314,19 @@ class _DietState extends State<Diet> {
                 a==0?
                 'Exercise':"व्यायाम",
                 style: TextStyle(
-                  fontSize: 40.0,
-                  color: Colors.green[400],
+                  fontSize: 42.0,
+                  fontFamily: 'SansitaSwashed',
+                  color: Colors.white,
                 ),
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   leading: Image(
                     image: AssetImage('assets/waling.jpg'),
@@ -263,6 +347,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   leading: Image(
                     image: AssetImage('assets/yoga.jpg'),
@@ -283,6 +374,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   leading: Image(
                     image: AssetImage('assets/pilates.jpg'),
@@ -303,6 +401,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   leading: Image(
                     image: AssetImage('assets/tai chi.png'),
@@ -323,6 +428,13 @@ class _DietState extends State<Diet> {
                 elevation: 8.0,
               ),
               Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                margin: EdgeInsets.only(left:10.0,right:10.0 ,bottom: 8.0),
+                color: Color(0xfffeebe7),
                 child: ListTile(
                   leading: Image(
                     image: AssetImage('assets/dancing.jpg'),
