@@ -1,26 +1,22 @@
+import 'package:flutter/material.dart';
 import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elchackathon_app/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:translator/translator.dart';
 
 String email;
 File _imageFile;
-Future<void> currentUserEmail() async {
+Future<void> currentUserEmail() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  email = prefs.getString('email');
+  email=prefs.getString('email');
 }
-
 // ignore: deprecated_member_use
 final _firestore = Firestore.instance;
-
 class Chat extends StatefulWidget {
   @override
   _ChatState createState() => _ChatState();
@@ -29,20 +25,20 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  String messageText = '';
+  String messageText='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfffeebe7),
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-          ),
-        ),
         title: Center(child: Text('Chat')),
         leading: null,
         backgroundColor: Color(0xfff1a3a1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(16),
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -68,14 +64,14 @@ class _ChatState extends State<Chat> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        if (messageText != '') {
+                        if(messageText!=''){
                           messageTextController.clear();
                           _firestore.collection('messages').add({
                             'text': messageText,
                             'sender': email,
                             'time': DateTime.now(),
                           });
-                          messageText = '';
+                          messageText='';
                         }
                       },
                       child: Text(
@@ -84,37 +80,27 @@ class _ChatState extends State<Chat> {
                       ),
                     ),
                     IconButton(
-                        icon:
-                            Icon(Icons.photo_camera, color: Color(0xfff1a3a1)),
-                        onPressed: () async {
+                        icon: Icon(Icons.photo_camera, color: Color(0xfff1a3a1)),
+                        onPressed: () async{
                           // ignore: deprecated_member_use
-                          File selected = await ImagePicker.pickImage(
-                              source: ImageSource.camera);
+                          File selected = await ImagePicker.pickImage(source: ImageSource.camera);
                           setState(() {
                             _imageFile = selected;
                           });
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ImageCapture(file: _imageFile)));
-                        }),
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
+                        }
+                    ),
                     IconButton(
-                        icon:
-                            Icon(Icons.photo_library, color: Color(0xfff1a3a1)),
-                        onPressed: () async {
+                        icon: Icon(Icons.photo_library, color: Color(0xfff1a3a1)),
+                        onPressed: () async{
                           // ignore: deprecated_member_use
-                          File selected = await ImagePicker.pickImage(
-                              source: ImageSource.gallery);
+                          File selected = await ImagePicker.pickImage(source: ImageSource.gallery);
                           setState(() {
                             _imageFile = selected;
                           });
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ImageCapture(file: _imageFile)));
-                        }),
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
+                        }
+                    ),
                   ],
                 ),
               ),
@@ -130,10 +116,7 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore
-          .collection('messages')
-          .orderBy('time', descending: false)
-          .snapshots(),
+      stream: _firestore.collection('messages').orderBy('time',descending: false).snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -183,26 +166,14 @@ class MessageBubble extends StatefulWidget {
 }
 
 class _MessageBubbleState extends State<MessageBubble> {
-  String out;
-  int a = 1;
-  GoogleTranslator translator = new GoogleTranslator();
-
-  void trans() {
-    translator.translate(widget.text, to: 'hi').then((output) {
-      setState(() {
-        widget.text = output.toString();
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    a == 1 ? trans() : null;
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment:
-            widget.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        widget.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             widget.sender,
@@ -214,53 +185,28 @@ class _MessageBubbleState extends State<MessageBubble> {
           Material(
             borderRadius: widget.isMe
                 ? BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    bottomLeft: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0))
+                topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0))
                 : BorderRadius.only(
-                    bottomLeft: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
+              bottomLeft: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
             elevation: 5.0,
             color: widget.isMe ? Color(0xfff1a3a1) : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: widget.text.substring(
-                              widget.text.length - 4, widget.text.length) ==
-                          '.jpg' ||
-                      widget.text.substring(
-                              widget.text.length - 4, widget.text.length) ==
-                          '.png' ||
-                      widget.text.substring(
-                              widget.text.length - 5, widget.text.length) ==
-                          '.jpeg'
-                  ? widget.isMe
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                          child: Image.network(
-                            widget.text,
-                          ),
-                        )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                          child: Image.network(
-                            widget.text,
-                          ),
-                        )
-                  : Text(
-                      widget.text,
-                      style: TextStyle(
-                        color: widget.isMe ? Colors.white : Color(0xfff1a3a1),
-                        fontSize: 15.0,
-                      ),
-                    ),
+              child: widget.text.substring(widget.text.length-4,widget.text.length)=='.jpg'||widget.text.substring(widget.text.length-4,widget.text.length)=='.png'||widget.text.substring(widget.text.length-5,widget.text.length)=='.jpeg' ?Image.network(
+                widget.text,
+              )
+                  :Text(
+                widget.text,
+                style: TextStyle(
+                  color: widget.isMe ? Colors.white : Color(0xfff1a3a1),
+                  fontSize: 15.0,
+                ),
+              ),
             ),
           ),
         ],
