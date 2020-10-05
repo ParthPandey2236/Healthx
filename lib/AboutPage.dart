@@ -32,7 +32,8 @@ class _AboutState extends State<About> {
             padding: EdgeInsets.only(bottom: 150.0),
             child: Column(
               children: <Widget>[
-                Row(children: [
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                   Padding(
                     padding: const EdgeInsets.all(11.0),
                     child: Row(
@@ -80,7 +81,7 @@ class _AboutState extends State<About> {
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
                       width: 60.0,
-                      margin: EdgeInsets.only(left: 75.0, top: 1),
+
                       child: FlatButton(
                         onPressed: () async {
                           //SharedPreferences prefs = await SharedPreferences.getInstance();
