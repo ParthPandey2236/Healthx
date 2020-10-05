@@ -180,6 +180,7 @@ class _DietState extends State<Diet> {
 
                 ),
               ),
+              SizedBox(height: 10.0),
               Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
@@ -319,6 +320,7 @@ class _DietState extends State<Diet> {
                   color: Colors.white,
                 ),
               ),
+              SizedBox(height: 10.0),
               Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
