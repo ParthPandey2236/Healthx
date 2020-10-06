@@ -31,9 +31,13 @@ Introducing **HealthX**
   
      <img src = "images(1)/Symptoms.jpeg" height=300> 
      
-     **Steps**
+     **Steps :- **
      1) After checking the boxes of the problems you are suffering in Symptoms page , hit the **Make Prediction** Button at the bottom of the page 
      
-      <div style="text-align:center"><img src = "images(1)/Predic.jpeg" height=50></div>
+          <div style="text-align:center"><img src = "images(1)/Predic.jpeg" height=50></div>
+      
+     2) An alert box will open for you to choose gender :- 
+     
+       <img src = "images(1)/Predic1.jpeg" height=300>
      
      
