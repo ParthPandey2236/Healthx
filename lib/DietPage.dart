@@ -62,7 +62,7 @@ class _DietState extends State<Diet> {
 
                  ),
                ) ,
-                shadowColor: Colors.green[700] ,
+                //shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -89,7 +89,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/image1.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.green[700] ,
+                //shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -115,7 +115,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/fatty fish.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.green[700] ,
+                //shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -141,7 +141,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/berries.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.green[700] ,
+               // shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -167,7 +167,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/beans.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.green[700] ,
+                //shadowColor: Colors.green[700] ,
                 elevation: 8.0,
               ),
               Text(
@@ -204,7 +204,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/fast food.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.red[700] ,
+                //shadowColor: Colors.red[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -230,7 +230,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/fried food.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.red[700] ,
+               // shadowColor: Colors.red[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -256,7 +256,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/processed meat.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.red[700] ,
+               // shadowColor: Colors.red[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -282,7 +282,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/added sugar.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.red[700] ,
+                //shadowColor: Colors.red[700] ,
                 elevation: 8.0,
               ),
               Card(
@@ -308,7 +308,7 @@ class _DietState extends State<Diet> {
                     backgroundImage: AssetImage('assets/refined carbs.jpg'),
                   ),
                 ) ,
-                shadowColor: Colors.red[700] ,
+               // shadowColor: Colors.red[700] ,
                 elevation: 8.0,
               ),
               Text(
@@ -345,7 +345,7 @@ class _DietState extends State<Diet> {
                     :"स्वस्थ वजन बनाए रखें। हृदय रोग, उच्च रक्तचाप और टाइप 2 मधुमेह सहित विभिन्न स्थितियों को रोकें या प्रबंधित करें। अपनी हड्डियों और मांसपेशियों को मजबूत करें।",
                   ),
                 ),
-                shadowColor: Colors.green[700],
+                //shadowColor: Colors.green[700],
                 elevation: 8.0,
               ),
               Card(
@@ -372,7 +372,7 @@ class _DietState extends State<Diet> {
                     :"नियमित योग अभ्यास मानसिक स्पष्टता और शांति पैदा करता है; शरीर में जागरूकता बढ़ाता है; पुराने तनाव पैटर्न से राहत देता है; मन को शांत करता है; ध्यान केन्द्रित करता है; और एकाग्रता को तेज करता है।",
                   ),
                 ),
-                shadowColor: Colors.green[700],
+                //shadowColor: Colors.green[700],
                 elevation: 8.0,
               ),
               Card(
@@ -399,7 +399,7 @@ class _DietState extends State<Diet> {
                     :"मांसपेशियों की शक्ति और टोन में वृद्धि, विशेष रूप से आपके पेट की मांसपेशियों, पीठ के निचले हिस्से, कूल्हों और नितंबों (आपके शरीर की मूल मांसपेशियों) में।",
                   ),
                 ),
-                shadowColor: Colors.green[700],
+                //shadowColor: Colors.green[700],
                 elevation: 8.0,
               ),
               Card(
@@ -426,7 +426,7 @@ class _DietState extends State<Diet> {
                         :"तनाव, चिंता और अवसाद, बेहतर मनोदशा, बेहतर एरोबिक क्षमता, बढ़ी हुई ऊर्जा और सहनशक्ति, बेहतर लचीलापन, संतुलन और चपलता।"
                   ),
                 ),
-                shadowColor: Colors.green[700],
+               // shadowColor: Colors.green[700],
                 elevation: 8.0,
               ),
               Card(
@@ -453,7 +453,7 @@ class _DietState extends State<Diet> {
                         :"आपके दिल और फेफड़ों की बेहतर स्थिति। मांसपेशियों की ताकत, धीरज और मोटर फिटनेस में वृद्धि हुई। एरोबिक फिटनेस में वृद्धि। बेहतर मांसपेशियों की टोन और ताकत।"
                   ),
                 ),
-                shadowColor: Colors.green[700],
+                //shadowColor: Colors.green[700],
                 elevation: 8.0,
               ),
 

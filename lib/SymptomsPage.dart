@@ -587,7 +587,7 @@ calculatePrediction(BuildContext context, String text) {
                               : Colors.redAccent[200])))
             else
               Text(
-                  ((24 - Total_male_symptoms - Total_female_symptoms) * 4)
+                  ((30 - Total_male_symptoms - Total_female_symptoms) * 3)
                           .toString() +
                       '%\n',
                   style: TextStyle(
