@@ -1,6 +1,7 @@
 import 'package:elchackathon_app/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _SignUpState extends State<SignUp> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: new DecorationImage(
-                  image: new  AssetImage('assets/LoginBackground.jpg'),
+                  image: new  AssetImage('assets/SignupBackground.png'),
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
@@ -38,6 +39,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 child: TextField(
                     textAlignVertical: TextAlignVertical.bottom,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color.fromRGBO(255,192,203,1),
@@ -161,6 +163,15 @@ class _SignUpState extends State<SignUp> {
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null) {
+                            Fluttertoast.showToast(
+                                msg: "Registration successful",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.black54,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
                             Navigator.pop(context);
                           }
                         } catch (e) {

@@ -24,7 +24,7 @@ class _BottomBarState extends State<BottomBar> {
           child: widget.bottomIcons == true
               ? Container(
                   decoration: BoxDecoration(
-                    color: Colors.pink.shade100.withOpacity(0.6),
+                    color: Color(0xfff1a3a1).withOpacity(0.6),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   padding:

@@ -5,6 +5,7 @@ import 'package:elchackathon_app/SymptomsPage.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
+import 'AboutPage.dart';
 import 'bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                         bottomIcons:
                             bottomIcons == BottomIcons.Symptoms ? true : false,
                         icons: EvaIcons.heartOutline,
-                        text: "Symptoms"),
+                        text: a == 0 ? "Symptoms" : "लक्षण"),
                     BottomBar(
                         onPressed: () {
                           setState(() {
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                         bottomIcons:
                             bottomIcons == BottomIcons.Chat ? true : false,
                         icons: EvaIcons.messageCircleOutline,
-                        text: "Chat"),
+                        text: a == 0 ? "Chat" : "बातचीत"),
                     BottomBar(
                         onPressed: () {
                           setState(() {
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         bottomIcons:
                             bottomIcons == BottomIcons.Diet ? true : false,
                         icons: EvaIcons.activityOutline,
-                        text: "Diet and Exercise"),
+                        text: a == 0 ? "Diet and Exercise" : "आहार और व्यायाम"),
                     BottomBar(
                         onPressed: () {
                           setState(() {
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                         bottomIcons:
                             bottomIcons == BottomIcons.About ? true : false,
                         icons: EvaIcons.questionMarkCircleOutline,
-                        text: "About"),
+                        text: a == 0 ? "About" : "के बारे में"),
                   ],
                 ),
               ),
