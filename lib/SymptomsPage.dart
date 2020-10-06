@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'AboutPage.dart';
 
 int Total_female_symptoms = 20;
-int Total_male_symptoms = 4;
+int Total_male_symptoms = 10;
 
 class Symptoms extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _SymptomsState extends State<Symptoms> {
   @override
   void initState() {
     Total_female_symptoms = 20;
-    Total_male_symptoms = 4;
+    Total_male_symptoms = 10;
     super.initState();
   }
 
@@ -417,9 +417,9 @@ class _CustomTextState extends State<CustomText> {
     if (widget.text == 'Lumps in the breast, usually painless\n' ||
         widget.text == 'स्तन में गांठ, आमतौर पर दर्द रहित\n') {
       if (widget.value == true)
-        Total_male_symptoms += 1;
+        Total_male_symptoms += 3;
       else
-        Total_male_symptoms -= 1;
+        Total_male_symptoms -= 3;
     } else if (widget.text == 'Thickening of the breast\n' ||
         widget.text == 'स्तन का मोटा होना\n') {
       if (widget.value == true)
@@ -431,15 +431,15 @@ class _CustomTextState extends State<CustomText> {
         widget.text ==
             "निप्पल या स्तन की त्वचा में परिवर्तन, जैसे कि डिंपलिंग, पक या लाली\n") {
       if (widget.value == true)
-        Total_male_symptoms += 1;
+        Total_male_symptoms += 3;
       else
-        Total_male_symptoms -= 1;
+        Total_male_symptoms -= 3;
     } else if (widget.text == 'Discharge of fluid from the nipples\n' ||
         widget.text == "निपल्स से तरल पदार्थ का निर्वहन\n") {
       if (widget.value == true)
-        Total_male_symptoms += 1;
+        Total_male_symptoms += 3;
       else
-        Total_male_symptoms -= 1;
+        Total_male_symptoms -= 3;
     } else {
       if (widget.value == true)
         Total_female_symptoms += 1;
@@ -546,7 +546,6 @@ chooseGenderDialog(BuildContext context) {
     },
   );
 }
-
 calculatePrediction(BuildContext context, String text) {
   Widget okButton = FlatButton(
     child: Text(
@@ -569,12 +568,12 @@ calculatePrediction(BuildContext context, String text) {
         child: Column(
           children: [
             if (text == 'Male' || text == "नर")
-              Text(((4 - Total_male_symptoms) * 25).toString() + '%\n',
+              Text(((10 - Total_male_symptoms) * 10).toString() + '%\n',
                   style: TextStyle(
                       fontSize: 30,
-                      color: ((4 - Total_male_symptoms) * 25) < 30
+                      color: ((10 - Total_male_symptoms) * 10) < 30
                           ? Colors.greenAccent[200]
-                          : ((((4 - Total_male_symptoms) * 25) < 50)
+                          : ((((10 - Total_male_symptoms) * 10) < 50)
                               ? Colors.orangeAccent[200]
                               : Colors.redAccent[200])))
             else if (text == 'Female' || text == 'महिला')
@@ -624,6 +623,23 @@ calculatePrediction(BuildContext context, String text) {
             Text(a == 0
                 ? "\n\nThis is in no way a perfect prediction. This is just a rough estimate based on the symptoms you selected."
                 : "यह किसी भी तरह से एक आदर्श भविष्यवाणी नहीं है। यह आपके द्वारा चुने गए लक्षणों के आधार पर सिर्फ एक मोटा अनुमान है।"),
+            Text(a == 0
+                ? "\n For more accurate/detailed predictions, "
+                : "अधिक सटीक / विस्तृत भविष्यवाणियों के लिए,"),
+            FlatButton(
+              onPressed: (){
+                _launchURL();
+              },
+              child: Text(
+                a == 0
+                    ? "Click here"
+                    : "यहाँ क्लिक करें",
+                style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -639,4 +655,13 @@ calculatePrediction(BuildContext context, String text) {
       return alert;
     },
   );
+}
+
+_launchURL() async{
+  const url = 'https://bcrisktool.cancer.gov/calculator.html';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
