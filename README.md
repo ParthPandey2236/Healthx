@@ -49,8 +49,9 @@ Introducing **HealthX**
       </p>
       
 - **Chat Box** - It is an open forum for all people worldwide to connect with doctors and medical enthusiasts and get more knowledge/assisstance with their ongoing treatment or new treatment. Few features that we have in the chat box is :- 
-1) Uploading of pictures (i.e. medical presciption,X-rays etc from gallery or the inbuilt camera in your phone).
-2) Cropping the image to the size of your choice to send the exact image.
-3) Having it stored in the chat column for future reference.
+   1) Uploading of pictures (i.e. medical presciption,X-rays etc from gallery or the inbuilt camera in your phone).
+   2) Cropping the image to the size of your choice to send the exact image.
+   3) Having it stored in the chat column for future reference.
 
-<img src = "images(1)/Chat.jpeg" height=300> 
+
+     <img src = "images(1)/Chat.jpeg" height=300> 
