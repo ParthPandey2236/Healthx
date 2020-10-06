@@ -67,18 +67,15 @@ class _ChatState extends State<Chat> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        if(messageText.length<5){
-                          Fluttertoast.showToast(
-                              msg: "Minimum 5 Letters Required",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.black54,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );
-                        }
-                        else if(messageText!=''){
+                        if(messageText!=''){
+                          if(messageText.length==1)
+                            messageText='  '+messageText+'  ';
+                          else if(messageText.length==2)
+                            messageText=' '+messageText+'  ';
+                          else if(messageText.length==3)
+                            messageText=' '+messageText+' ';
+                          else if(messageText.length==4)
+                            messageText=messageText+' ';
                           messageTextController.clear();
                           _firestore.collection('messages').add({
                             'text': messageText,
