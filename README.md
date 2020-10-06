@@ -1,6 +1,8 @@
 
 # HealthX
 
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/u7RruO7-2CQ)
+
 In 2018, nearly 2 million new breast cancer cases were diagnosed.
 It is estimated that 627,000 women died from breast cancer. 
 That is approximately 15% of all cancer deaths among women
