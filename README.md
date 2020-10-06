@@ -20,4 +20,20 @@ Introducing **HealthX**
 
 1) Easy Sign up and Login with your email and password.
 
-<img src = "images(1)/Login.jpeg" height=500 img src = "images(1)/Signup.jpeg" height=500>
+<p float="left">
+<img src = "images(1)/Login.jpeg" height=300> 
+<img src = "images(1)/Signup.jpeg" height=300>
+</p>
+
+2) Once Signed in, there will be 4 options in the Bottom Navigation bar :- 
+  
+  - **Symptoms** - Takes in symptoms from the user that he/she is suffering from and predict roughly the chance of having breast cancer.
+  
+     <img src = "images(1)/Symptoms.jpeg" height=300> 
+     
+     **Steps**
+     1) After checking the boxes of the problems you are suffering in Symptoms page , hit the **Make Prediction** Button at the bottom of the page 
+     
+      <div style="text-align:center"><img src = "images(1)/Predic.jpeg" height=50></div>
+     
+     
