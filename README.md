@@ -38,6 +38,12 @@ Introducing **HealthX**
       
      2) An alert box will open for you to choose gender :- 
      
-       <img src = "images(1)/Predic1.jpeg" height=300>
+           <img src = "images(1)/Predic1.jpeg" height=300>
      
+     3) After choosing gender, a rough estimate will be shown in 3 different colours. If the precentage/estimate is in **GREEN** colour then the user is safe or having any other      medical problem other than Breast Cancer. If the percentage is shown in **Orange** colour, then the person is in gray area and must consult a doctor soon. If the percentage is shown in **RED** colour, then the person must immediately visit a doctor. Along with these a link is provided in the Dialogue box which calculates **Risk of Breast Cancer** with an algorithm published by the US Government.
      
+<p float="left">
+<img src = "images(1)/Predic2.jpeg" height=300> 
+<img src = "images(1)/Predic3.jpeg" height=300>
+<img src = "images(1)/Predic4.jpeg" height=300>
+</p>
