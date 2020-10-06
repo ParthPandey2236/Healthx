@@ -31,7 +31,7 @@ Introducing **HealthX**
   
      <img src = "images(1)/Symptoms.jpeg" height=300> 
      
-     **Steps :- **
+     **Steps :-**
      1) After checking the boxes of the problems you are suffering in Symptoms page , hit the **Make Prediction** Button at the bottom of the page 
      
           <div style="text-align:center"><img src = "images(1)/Predic.jpeg" height=50></div>
@@ -49,9 +49,37 @@ Introducing **HealthX**
       </p>
       
 - **Chat Box** - It is an open forum for all people worldwide to connect with doctors and medical enthusiasts and get more knowledge/assisstance with their ongoing treatment or new treatment. Few features that we have in the chat box is :- 
-   1) Uploading of pictures (i.e. medical presciption,X-rays etc from gallery or the inbuilt camera in your phone).
+   1) Uploading of pictures (i.e. medical presciption, X-rays etc from gallery or the inbuilt camera in your phone).
    2) Cropping the image to the size of your choice to send the exact image.
    3) Having it stored in the chat column for future reference.
 
 
          <img src = "images(1)/Chat.jpeg" height=300> 
+         
+- **Diet and Excercise** - It is an informative feed which has numerous details and information about good and bad food habits and a daily excercise routine which will highly reduce the risk of a person having Breast Cancer.
+
+     <img src = "images(1)/Diet.jpeg" height=300>
+     
+- **About** - It's a page having the goal/vision of the app **HealthX** and how it will help the community. This page also has a few features like - **Language Change** option and **Sign Out** Option.
+
+    1. **Language Change** - It is a toggle switch in the top left corner of the About section in the App and it swiftly **changes the language of the entire app** to the language of your choice in mere mili-seconds. This feature was added solely to remove the **language barrier** among people in different community/regions and thereby fight **Breast cancer all united together**.
+    
+         <img src = "images(1)/Lang.jpeg" height=50>
+        
+    After selecting **hindi** (Most common used language of India) conversions in all pages happen and even the chats changes to the local language for better understanding of the user :- 
+    
+    <p float="left">
+      <img src = "images(1)/Lang1.jpeg" height=300> 
+      <img src = "images(1)/Lang2.jpeg" height=300>
+      <img src = "images(1)/Lang3.jpeg" height=300>
+       <img src = "images(1)/Lang4.jpeg" height=300>
+      </p>
+      
+   **Developers :-**
+   
+   <img src = "images(1)/Dev.jpeg" height=300>
+   
+   We have made this Application with the vision of helping the community in any small way possible and just hope that the people suffering from Breast Cancer worldwide gets cured soon and lead a healthy life.
+   
+   Regards,
+   **Team Ctrl-Alt-Elite**
