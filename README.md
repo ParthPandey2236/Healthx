@@ -20,5 +20,4 @@ Introducing **HealthX**
 
 1) Easy Sign up and Login with your email and password.
 
-<img src = "images(1)/Login.jpeg" height=500>
-<img src = "images(1)/Signup.jpeg" height=500>
+<img src = "images(1)/Login.jpeg" height=500 img src = "images(1)/Signup.jpeg" height=500>
