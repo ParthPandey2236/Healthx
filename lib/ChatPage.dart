@@ -8,6 +8,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:translator/translator.dart';
+import 'AboutPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 String email;
 File _imageFile;
@@ -18,6 +20,7 @@ Future<void> currentUserEmail() async{
 // ignore: deprecated_member_use
 final _firestore = Firestore.instance;
 class Chat extends StatefulWidget {
+
   @override
   _ChatState createState() => _ChatState();
 }
@@ -31,7 +34,7 @@ class _ChatState extends State<Chat> {
     return Scaffold(
       backgroundColor: Color(0xfffeebe7),
       appBar: AppBar(
-        title: Center(child: Text('Chat')),
+        title: Center(child: Text(a==1 ? 'बातचीत' :'Chat')),
         leading: null,
         backgroundColor: Color(0xfff1a3a1),
         shape: RoundedRectangleBorder(
@@ -64,7 +67,18 @@ class _ChatState extends State<Chat> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        if(messageText!=''){
+                        if(messageText.length<5){
+                          Fluttertoast.showToast(
+                              msg: "Minimum 5 Letters Required",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.black54,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
+                        }
+                        else if(messageText!=''){
                           messageTextController.clear();
                           _firestore.collection('messages').add({
                             'text': messageText,
@@ -75,7 +89,7 @@ class _ChatState extends State<Chat> {
                         }
                       },
                       child: Text(
-                        'Send',
+                        a==1 ? 'भेजने' : 'Send',
                         style: kSendButtonTextStyle,
                       ),
                     ),
@@ -112,7 +126,12 @@ class _ChatState extends State<Chat> {
   }
 }
 
-class MessagesStream extends StatelessWidget {
+class MessagesStream extends StatefulWidget {
+  @override
+  _MessagesStreamState createState() => _MessagesStreamState();
+}
+
+class _MessagesStreamState extends State<MessagesStream> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -157,7 +176,7 @@ class MessagesStream extends StatelessWidget {
 class MessageBubble extends StatefulWidget {
   MessageBubble({this.sender, this.text, this.isMe});
 
-  final String sender;
+  String sender;
   String text;
   final bool isMe;
 
@@ -166,9 +185,26 @@ class MessageBubble extends StatefulWidget {
 }
 
 class _MessageBubbleState extends State<MessageBubble> {
+  String out;
+
+  GoogleTranslator translator = new GoogleTranslator();
 
   @override
   Widget build(BuildContext context) {
+    if(a==1) {
+      translator.translate(widget.text, to: 'hi').then((output) {
+        setState(() {
+          widget.text = output.toString();
+        });
+      });
+    }
+    if(a==0){
+      translator.translate(widget.text, to: 'en').then((output) {
+        setState(() {
+          widget.text = output.toString();
+        });
+      });
+    }
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Column(
