@@ -54,4 +54,4 @@ Introducing **HealthX**
    3) Having it stored in the chat column for future reference.
 
 
-     <img src = "images(1)/Chat.jpeg" height=300> 
+         <img src = "images(1)/Chat.jpeg" height=300> 
