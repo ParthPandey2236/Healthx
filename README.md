@@ -1,28 +1,87 @@
-# Key features to be added: 
-1.About 
-2.Symptoms 
- a)Probability Calculator 
- 3.Diet and Exercise
- 4.Chat Messenger
-
-# Division of work
-1. Soham Sakaria :- -> Edit Readme of this github repo -> Login/Register Page -> Data base to store the login id of patient -> symptoms page and calculate percentage
-
-2. Parth Pandey :- -> Diet and Excercise part -> Add in features on a separate page about food info and food used to avoid breast cancer -> Excercise tips only in a single page -> help sakaria with the login page -> symptoms page with illustrations
-
-3. Parth Srivastava :- //chat application details eeshan ke saath discuss karlena -> joint work in chat application with eeshan -> symptoms page with illustrations -> showing of sections of medicine and tests to be done (more ellaboration later)
-
-4. Eeshan Dutta :- -> Edit Readme of this github repo -> chat application -> uploading image with filter part for storing in the prescription -> About in the app
-
-Note :-
-1. All illustrations needs to be first passed by the team and then added
-2. Main colour of the app is pink (all shades cool) 
-3. Probabilty calculator needs to discussed upon as to how we planning to do those as there can be a number of ways in doing so and I cannot estimate the load of the work.
-4. This is a very vague and rough division but we will discuss the flow of the app
 
 # HealthX
-FEATURES OF THE APP :- 
-1. Have a Symptoms page which states the symptoms of breast cancer of both male and female. It also has a prediction model which takes in the symptoms of a person(who is not yet      diagnosed with breast cancer) and gives the probability of the person having breast cancer or not.
-2. Have a common chat group which helps connect people/patients with doctors and vice versa and have a conversation about various problems/solutions related to breast cancer.        Image upload feature is also there which makes it more efficient for doctor to get Xrays/prescription from the patients and give their valuable advice to the patient in chat      box.
-3. Have a Diets and Exercise page which publishes the foods that one must eat and avoid and the excercises one must do to reduce the chances of having breast cancer or for the        knowledge of the people already suffering from it/or in early stages.
-4. Have an About page which gives a short description about our app and what it strives to provide for helping the community in little ways possible and also a small bio about us    developers.
+
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/u7RruO7-2CQ)
+
+In 2018, nearly 2 million new breast cancer cases were diagnosed.
+It is estimated that 627,000 women died from breast cancer. 
+That is approximately 15% of all cancer deaths among women
+In order to improve breast cancer outcomes and survival, early detection is critical.
+
+So we came up with an idea to make an application with a vision that people from all around the world will have the resources to consult a doctor. People from all over the world will get access to all information relating Breast Cancer.
+
+Introducing **HealthX**
+
+-	Helps to detect breast cancers symptoms at early stage.
+-	A common chat forum to consult doctors and get more knowledge about medical issues from others all around the world.
+- Information about all your essential diet and exercise to reduce the chance of having breast cancer.
+- Choice of language for the user for dissolving the language barrier among people worldwide and having a wider reach.
+- Uploading and storing of presciptions/X-rays in chat section to get advise from doctors worldwide.
+
+## Features
+
+1) Easy Sign up and Login with your email and password - powered by **Google Realtime Firebase**.
+
+<p float="left">
+<img src = "images(1)/Login.jpeg" height=300            > 
+<img src = "images(1)/Signup.jpeg" height=300>
+</p>
+
+2) Once Signed in, there will be 4 options in the Bottom Navigation bar :- 
+  
+  - **Symptoms** - Takes in symptoms from the user that he/she is suffering from and predict roughly the chance of having breast cancer.
+  
+     <img src = "images(1)/Symptoms.jpeg" height=300> 
+     
+     **Steps :-**
+     1) After checking the boxes of the problems you are suffering in Symptoms page , hit the **Make Prediction** Button at the bottom of the page 
+     
+          <div style="text-align:center"><img src = "images(1)/Predic.jpeg" height=50></div>
+      
+     2) An alert box will open for you to choose gender :- 
+     
+           <img src = "images(1)/Predic1.jpeg" height=300>
+     
+     3) After choosing gender, a rough estimate will be shown in 3 different colours. If the precentage/estimate is in **GREEN** colour then the user is safe or having any other      medical problem other than Breast Cancer. If the percentage is shown in **Orange** colour, then the person is in gray area and must consult a doctor soon. If the percentage is shown in **RED** colour, then the person must immediately visit a doctor. Along with these a link is provided in the Dialogue box which calculates **Risk of Breast Cancer** with an algorithm published by the US Government itseld.
+     
+      <p float="left">
+      <img src = "images(1)/Predic2.jpeg" height=300> 
+      <img src = "images(1)/Predic3.jpeg" height=300>
+      <img src = "images(1)/Predic4.jpeg" height=300>
+      </p>
+      
+- **Chat Box** - It is an open forum for all people worldwide to connect with doctors and medical enthusiasts and get more knowledge/assisstance with their ongoing treatment or new treatment. Few features that we have in the chat box is :- 
+   1) Uploading of pictures (i.e. medical presciption, X-rays etc from gallery or the inbuilt camera in your phone).
+   2) Cropping the image to the size of your choice to send the exact image.
+   3) Having it stored in the chat column for future reference.
+
+
+         <img src = "images(1)/Chat.jpeg" height=300> 
+         
+- **Diet and Excercise** - It is an informative feed which has numerous details and information about good and bad food habits and a daily excercise routine which will highly reduce the risk of a person having Breast Cancer.
+
+     <img src = "images(1)/Diet.jpeg" height=300>
+     
+- **About** - It's a page having the goal/vision of the app **HealthX** and how it will help the community. This page also has a few features like - **Language Change** option and **Sign Out** Option.
+
+    1. **Language Change** - It is a toggle switch in the top left corner of the About section in the App and it swiftly **changes the language of the entire app** to the language of your choice in mere mili-seconds. This feature was added solely to remove the **language barrier** among people in different community/regions and thereby fight **Breast cancer all united together**.
+    
+         <img src = "images(1)/Lang.jpeg" height=50>
+        
+    After selecting **hindi** (Most common used language of India) conversions in all pages happen and even the chats changes to the local language for better understanding of the user :- 
+    
+    <p float="left">
+      <img src = "images(1)/Lang1.jpeg" height=300> 
+      <img src = "images(1)/Lang2.jpeg" height=300>
+      <img src = "images(1)/Lang3.jpeg" height=300>
+       <img src = "images(1)/Lang4.jpeg" height=300>
+      </p>
+      
+   **Developers :-**
+   
+   <img src = "images(1)/Dev.jpeg" height=300>
+   
+   We have made this Application with the vision of helping the community in any small way possible and just hope that the people suffering from Breast Cancer worldwide gets cured soon and lead a healthy life.
+   
+   Regards,
+   **Team Ctrl-Alt-Elite**
