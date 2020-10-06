@@ -2,6 +2,8 @@
 # HealthX
 
 [![Watch the video](images(1)/Vid.png)](https://youtu.be/u7RruO7-2CQ)
+**(Click the image to go to the youtube video link of the App)**
+
 
 In 2018, nearly 2 million new breast cancer cases were diagnosed.
 It is estimated that 627,000 women died from breast cancer. 
