@@ -58,12 +58,7 @@ Introducing **HealthX**
    2) Cropping the image to the size of your choice to send the exact image.
    3) Having it stored in the chat column for future reference.
 
-
          <img src = "images(1)/Chat.jpeg" height=300> 
-         
-        The camera and gallery option is available in bottom right corner of the screen 
-    
-         <img src = "images(1)/Camera.jpeg" height=50>
          
 - **Diet and Excercise** - It is an informative feed which has numerous details and information about good and bad food habits and a daily excercise routine which will highly reduce the risk of a person having Breast Cancer.
 
