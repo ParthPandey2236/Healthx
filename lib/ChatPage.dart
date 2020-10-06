@@ -9,7 +9,6 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:translator/translator.dart';
 import 'AboutPage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 String email;
 File _imageFile;
@@ -29,20 +28,21 @@ class _ChatState extends State<Chat> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
   String messageText='';
-  @override
+
+  /*@override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffeebe7),
-      appBar: AppBar(
-        title: Center(child: Text(a==1 ? 'बातचीत' :'Chat')),
-        leading: null,
-        backgroundColor: Color(0xfff1a3a1),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(16),
+        backgroundColor: Color(0xfffeebe7),
+        appBar: AppBar(
+          title: Center(child: Text(a==1 ? 'बातचीत' :'Chat')),
+          leading: null,
+          backgroundColor: Color(0xfff1a3a1),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(16),
+            ),
           ),
         ),
-      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,14 +68,6 @@ class _ChatState extends State<Chat> {
                     FlatButton(
                       onPressed: () {
                         if(messageText!=''){
-                          if(messageText.length==1)
-                            messageText='  '+messageText+'  ';
-                          else if(messageText.length==2)
-                            messageText=' '+messageText+'  ';
-                          else if(messageText.length==3)
-                            messageText=' '+messageText+' ';
-                          else if(messageText.length==4)
-                            messageText=messageText+' ';
                           messageTextController.clear();
                           _firestore.collection('messages').add({
                             'text': messageText,
@@ -123,12 +115,7 @@ class _ChatState extends State<Chat> {
   }
 }
 
-class MessagesStream extends StatefulWidget {
-  @override
-  _MessagesStreamState createState() => _MessagesStreamState();
-}
-
-class _MessagesStreamState extends State<MessagesStream> {
+class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -148,12 +135,12 @@ class _MessagesStreamState extends State<MessagesStream> {
           final messageText = message.data()['text'];
           final messageSender = message.data()['sender'];
 
-          String currentUser = email;
-          currentUserEmail();
+          final currentUser = email;
+
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
-            isMe: email.toString() == messageSender,
+            isMe: currentUser == messageSender,
           );
 
           messageBubbles.add(messageBubble);
@@ -173,7 +160,7 @@ class _MessagesStreamState extends State<MessagesStream> {
 class MessageBubble extends StatefulWidget {
   MessageBubble({this.sender, this.text, this.isMe});
 
-  String sender;
+  final String sender;
   String text;
   final bool isMe;
 
@@ -245,9 +232,198 @@ class _MessageBubbleState extends State<MessageBubble> {
         ],
       ),
     );
+  }*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xfffeebe7),
+      appBar: AppBar(
+        title: Center(child: Text(a==1 ? 'बातचीत' :'Chat')),
+        leading: null,
+        backgroundColor: Color(0xfff1a3a1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(16),
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            MessagesStream(),
+            Container(
+              decoration: kMessageContainerDecoration,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 60.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        controller: messageTextController,
+                        onChanged: (value) {
+                          messageText = value;
+                        },
+                        decoration: kMessageTextFieldDecoration,
+                      ),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        if(messageText!=''){
+                        if(messageText.length==1)
+                        messageText='  '+messageText+'  ';
+                        else if(messageText.length==2)
+                        messageText=' '+messageText+'  ';
+                        else if(messageText.length==3)
+                        messageText=' '+messageText+' ';
+                        else if(messageText.length==4)
+                        messageText=messageText+' ';
+                          messageTextController.clear();
+                          _firestore.collection('messages').add({
+                            'text': messageText,
+                            'sender': email,
+                            'time': DateTime.now(),
+                          });
+                          messageText='';
+                        }
+                      },
+                      child: Text(
+                        a==1 ? 'भेजने' : 'Send',
+                        style: kSendButtonTextStyle,
+                      ),
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.photo_camera, color: Color(0xfff1a3a1)),
+                        onPressed: () async{
+                          // ignore: deprecated_member_use
+                          File selected = await ImagePicker.pickImage(source: ImageSource.camera);
+                          setState(() {
+                            _imageFile = selected;
+                          });
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
+                        }
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.photo_library, color: Color(0xfff1a3a1)),
+                        onPressed: () async{
+                          // ignore: deprecated_member_use
+                          File selected = await ImagePicker.pickImage(source: ImageSource.gallery);
+                          setState(() {
+                            _imageFile = selected;
+                          });
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCapture(file: _imageFile)));
+                        }
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
+class MessagesStream extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore.collection('messages').orderBy('time',descending: false).snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Color(0xfff1a3a1),
+            ),
+          );
+        }
+        // ignore: deprecated_member_use
+        final messages = snapshot.data.documents.reversed;
+        List<MessageBubble> messageBubbles = [];
+        for (var message in messages) {
+          final messageText = message.data()['text'];
+          final messageSender = message.data()['sender'];
+
+          final currentUser = email;
+
+          final messageBubble = MessageBubble(
+            sender: messageSender,
+            text: messageText,
+            isMe: currentUser == messageSender,
+          );
+
+          messageBubbles.add(messageBubble);
+        }
+        return Expanded(
+          child: ListView(
+            reverse: true,
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            children: messageBubbles,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class MessageBubble extends StatelessWidget {
+  MessageBubble({this.sender, this.text, this.isMe});
+
+  final String sender;
+  final String text;
+  final bool isMe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment:
+        isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            sender,
+            style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.black54,
+            ),
+          ),
+          Material(
+            borderRadius: isMe
+                ? BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0))
+                : BorderRadius.only(
+              bottomLeft: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+            elevation: 5.0,
+            color: isMe ? Color(0xfff1a3a1) : Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              child: text.substring(text.length-4,text.length)=='.jpg'||text.substring(text.length-4,text.length)=='.png'||text.substring(text.length-5,text.length)=='.jpeg' ?Image.network(
+                text,
+              )
+                  :Text(
+                text,
+                style: TextStyle(
+                  color: isMe ? Colors.white : Color(0xfff1a3a1),
+                  fontSize: 15.0,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 class ImageUpload extends StatelessWidget {
   @override
   File imagefile;
