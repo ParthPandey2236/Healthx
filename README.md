@@ -18,10 +18,10 @@ Introducing **HealthX**
 
 ## Features
 
-1) Easy Sign up and Login with your email and password.
+1) Easy Sign up and Login with your email and password - powered by **Google Realtime Firebase**.
 
 <p float="left">
-<img src = "images(1)/Login.jpeg" height=300> 
+<img src = "images(1)/Login.jpeg" height=300            > 
 <img src = "images(1)/Signup.jpeg" height=300>
 </p>
 
@@ -40,10 +40,17 @@ Introducing **HealthX**
      
            <img src = "images(1)/Predic1.jpeg" height=300>
      
-     3) After choosing gender, a rough estimate will be shown in 3 different colours. If the precentage/estimate is in **GREEN** colour then the user is safe or having any other      medical problem other than Breast Cancer. If the percentage is shown in **Orange** colour, then the person is in gray area and must consult a doctor soon. If the percentage is shown in **RED** colour, then the person must immediately visit a doctor. Along with these a link is provided in the Dialogue box which calculates **Risk of Breast Cancer** with an algorithm published by the US Government.
+     3) After choosing gender, a rough estimate will be shown in 3 different colours. If the precentage/estimate is in **GREEN** colour then the user is safe or having any other      medical problem other than Breast Cancer. If the percentage is shown in **Orange** colour, then the person is in gray area and must consult a doctor soon. If the percentage is shown in **RED** colour, then the person must immediately visit a doctor. Along with these a link is provided in the Dialogue box which calculates **Risk of Breast Cancer** with an algorithm published by the US Government itseld.
      
-<p float="left">
-<img src = "images(1)/Predic2.jpeg" height=300> 
-<img src = "images(1)/Predic3.jpeg" height=300>
-<img src = "images(1)/Predic4.jpeg" height=300>
-</p>
+      <p float="left">
+      <img src = "images(1)/Predic2.jpeg" height=300> 
+      <img src = "images(1)/Predic3.jpeg" height=300>
+      <img src = "images(1)/Predic4.jpeg" height=300>
+      </p>
+      
+- **Chat Box** - It is an open forum for all people worldwide to connect with doctors and medical enthusiasts and get more knowledge/assisstance with their ongoing treatment or new treatment. Few features that we have in the chat box is :- 
+1) Uploading of pictures (i.e. medical presciption,X-rays etc from gallery or the inbuilt camera in your phone).
+2) Cropping the image to the size of your choice to send the exact image.
+3) Having it stored in the chat column for future reference.
+
+<img src = "images(1)/Chat.jpeg" height=300> 
